@@ -43,14 +43,36 @@ export const greeting = async () => {
 }
 
 /**
+ * 컨트랙트 메서드를 호출합니다.
+ * @param method 함수명
+ * @param args 함수에 전달할 파라미터
+ * @returns {Promise<any>}
+ */
+export const viewMethod = async (method,args) => {
+    logger.debug("[컨트랙트 호출] Method:",method,"args: ",args);
+    try {
+        let response = await wallet.viewMethod({method: method, contractId: CONTRACT_ADDRESS, args: args});
+        logger.debug("[컨트랙트 호출 결과] (",method,args,")  Response : ",response);
+        return response;
+    } catch (error) {
+        logger.error("[컨트랙트 호출 오류]",error);
+    }
+}
+
+/**
  * 사용자 ID 반환 메서드
- * private
  * @returns {null|string|*}
  */
-const getAccountId = () => {
+export const getAccountId = () => {
     if(wallet.accountId === undefined) {
-        throw 'user not signed in';
+        throw Error('로그인이 되어있지 않은 상태입니다.');
     } else {
         return wallet.accountId;
     }
 }
+
+
+
+
+
+
