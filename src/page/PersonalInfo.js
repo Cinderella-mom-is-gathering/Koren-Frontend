@@ -16,6 +16,7 @@ margin:20px;
   display: flex;
   flex-direction:column;
 `
+
 const PersonalInfoPage=()=> {
     const [name, setName] = useState("")
     const [birth,setBirth]=useState("")
@@ -27,6 +28,7 @@ const PersonalInfoPage=()=> {
     }
 
     return (
+        <div>
         <MainWrapper>
             <Title content="나의 정보"/>
             <SubTitle content="서비스에 필요한 정보"/>
@@ -36,10 +38,12 @@ const PersonalInfoPage=()=> {
             <DateForm value={birth} onChage={onBirthChange}/>
             <ItemLabel content="거주지"/>
             <AddressSelect/>
-            <div style={{flex:1}}></div>
-            <SubmitButton content="등록하기"/>
 
         </MainWrapper>
+
+            <SubmitButton content="등록하기"/>
+
+    </div>
     );
 }
 

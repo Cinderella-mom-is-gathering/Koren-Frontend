@@ -1,19 +1,29 @@
-import Button from 'react-bootstrap/Button';
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const Button = styled.button`
+  
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:70px;
+  background-color : cornflowerblue;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 5px;
   
 `
 const SubmitButton=({content})=> {
     return (
-        <Wrapper>
-        <div className="d-grid gap-2">
-            <Button variant="primary" size="lg">
-                {content}
-            </Button>
+        <form>
 
-        </div>
-        </Wrapper>
+        <Button type='button'> {content} </Button>
+
+        </form>
     );
 }
 
