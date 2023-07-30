@@ -1,6 +1,7 @@
 import {callMethod, executeContractMethod, viewMethod} from "../util/WalletUtil";
 import axios from "axios";
 import logger from "../util/Logger";
+import {executeMockContractMethod} from "./mock/mock";
 
 const connection = process.env.REACT_APP_CONNECTION || 'wallet';
 const mockServerHost = process.env.REACT_APP_MOCK_SERVER_HOST || 'localhost';
@@ -22,8 +23,7 @@ export const greeting = async () => {
 const send = async (method, args, gas, deposit) => {
     if(connection === 'mock') {
         try{
-            let axiosResponse = await axios.get("http://"+mockServerHost+":"+mockServerPort+"/"+method);
-            return axiosResponse.data;
+            return executeMockContractMethod(method,args,gas,deposit);
         } catch (error) {
             logger.warn("Mock 요청 과정에서 에러가 발생했습니다.");
             logger.warn(error);
