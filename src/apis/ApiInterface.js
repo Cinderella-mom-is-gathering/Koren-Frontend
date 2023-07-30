@@ -22,5 +22,7 @@ const send = async (method, args) => {
 
     } else if (connection === 'wallet') {
         return await viewMethod(method,args);
+    } else {
+        logger.error("REACT_APP_CONNECTION 설정을 확인해주세요");
     }
 }
