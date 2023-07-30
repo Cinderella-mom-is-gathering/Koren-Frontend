@@ -1,15 +1,15 @@
 import React, { useState} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import styled from "styled-components";
-import Title from "../Component/Title";
-import SubTitle from "../Component/SubTitle";
-import ItemLabel from "../Component/ItemLabel";
-import TextForm from "../Component/TextForm";
-import DateForm from "../Component/DateForm";
-import SubmitButton from "../Component/SubmitButton";
-import AddressSelect from "../Component/AddressSelect";
+import Title from "../component/Title";
+import SubTitle from "../component/SubTitle";
+import ItemLabel from "../component/ItemLabel";
+import TextForm from "../component/TextForm";
+import DateForm from "../component/DateForm";
+import SubmitButton from "../component/SubmitButton";
+import AddressSelect from "../component/AddressSelect";
 
-const Wrapper = styled.div`
+const MainWrapper = styled.div`
 margin:20px;
   position: relative;
   
@@ -27,7 +27,7 @@ const PersonalInfoPage=()=> {
     }
 
     return (
-        <Wrapper>
+        <MainWrapper>
             <Title content="나의 정보"/>
             <SubTitle content="서비스에 필요한 정보"/>
             <ItemLabel content="이름"/>
@@ -39,7 +39,7 @@ const PersonalInfoPage=()=> {
             <div style={{flex:1}}></div>
             <SubmitButton content="등록하기"/>
 
-        </Wrapper>
+        </MainWrapper>
     );
 }
 
