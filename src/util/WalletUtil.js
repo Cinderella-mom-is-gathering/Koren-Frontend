@@ -33,24 +33,52 @@ export const signOut = () => {
 }
 
 /**
- * 연결 테스트
- * 로그인 여부와 상관없이 동작함
- * @returns {Promise<any>} contract에서 설정한 메시지를 Promise로 반환
+ * contract 메서드를 호출합니다.
+ * method와 args 만 전달된 경우 viewMethod가,
+ * gas와 deposit 까지 전달된 경우 callMethod가 호출됩니다.
+ * @param method
+ * @param args
+ * @param gas
+ * @param deposit
+ * @returns {Promise<*>}
  */
-export const greeting = async () => {
-    const currentGreeting = await wallet.viewMethod({ method: 'get_greeting', contractId: CONTRACT_ADDRESS });
-    return currentGreeting;
+export const executeContractMethod = async (method,args,gas,deposit) => {
+    if (typeof gas !== 'undefined' && typeof deposit !== 'undefined') {
+        // gas와 deposit 인자가 제공되었을 경우, callMethod를 호출
+        return await callMethod(method, args, gas, deposit);
+    } else {
+        // gas와 deposit 인자가 제공되지 않았을 경우, viewMethod를 호출
+        return await viewMethod(method, args);
+    }
+}
+const viewMethod = async (method,args) => {
+    logger.debug("[컨트랙트 호출] Method:",method,"args: ",args);
+    let response = await wallet.viewMethod({method: method, contractId: CONTRACT_ADDRESS, args: args});
+    logger.debug("[컨트랙트 호출 결과] (",method,args,")  Response : ",response);
+    return response;
+}
+
+const callMethod = async (method,args,gas,deposit) => {
+    logger.debug("[컨트랙트 호출] Method: ",method,"args:",args,"gas:",gas,"deposit:",deposit);
+    let response = await wallet.callMethod({CONTRACT_ADDRESS, method, args, gas, deposit});
+    logger.debug("[컨트랙트 호출 결과] (",method,args,") Response :",response);
+    return response;
 }
 
 /**
  * 사용자 ID 반환 메서드
- * private
  * @returns {null|string|*}
  */
-const getAccountId = () => {
+export const getAccountId = () => {
     if(wallet.accountId === undefined) {
-        throw 'user not signed in';
+        throw Error('로그인이 되어있지 않은 상태입니다.');
     } else {
         return wallet.accountId;
     }
 }
+
+
+
+
+
+

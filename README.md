@@ -1,23 +1,70 @@
-# 도움이 닿다
+# Getting Started with Create React App
 
----
-## 배경
-사회적 약자는 여러 이유로 인해 위험에 처할 수 있습니다. 예를 들어, 노인이나 장애인은 신체적 제약으로 인해 길을 걷는 데 어려움을 겪을 수 있고, 여성은 야간에 혼자 다니는 것이 더욱 위험할 수 있습니다. 이런 상황에서 긴급한 도움이 필요한 순간들이 발생할 수 있습니다. 이러한 문제들을 해결하기 위해 사회적 약자들이 위험 상황에서 빠르고 쉽게 도움을 받을 수 있는 방법이 필요합니다.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
----
+## Available Scripts
 
-## 구현 기능
-기관에 등록된 자원 봉사자가 지갑을 등록합니다.
-센터가 개인의 사용자의 신원을 판단합니다. 즉 제 3의 기관에서 인증을 해다. >> 등록된 자원봉사자들만 사용할 수 있도록 인증을 한다.
-사회적 약자 위급 상황 발생 시, 앱의 호출 버튼을 누릅니다.
-호출 알람이 온 주변의 신원 인증된 자원봉사자가 연락을 받습니다.(사회적 약자가 위급 상황 연락을 한 위치 주변에 있는 자원봉사자에게 연락이 갑니다.)
-연락을 받은 자원봉사자는 위급한 상황이 발생한 사회적 약자에게 가서 도움을 줍니다.
-도움을 준 자원봉사자는 보상으로 토큰을 받습니다.
+In the project directory, you can run:
 
----
-## 기술 스택
+### `npm start`
 
----
-## 연락처
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
----
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
