@@ -9,6 +9,7 @@ import AddPostPage from "./page/AddPostPage";
 import PostNFTInfoPage from "./page/PostNFTInfoPage";
 import LoginPage from "./page/LoginPage";
 import RequestAdPage from "./page/RequestAdPage";
+import ProfilePage from "./page/ProfilePage";
 
 import { Routes, Route, HashRouter } from "react-router-dom";
 // import { useState } from "react";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/posts/add" element={<AddPostPage />} />
         <Route path="/posts/:postId/nft" element={<PostNFTInfoPage />} />
         <Route path="/advertisements/add" element={<RequestAdPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </HashRouter>
   );
