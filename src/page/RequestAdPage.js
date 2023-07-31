@@ -7,6 +7,10 @@ import ImgBox from "../component/postCard/ImgBox";
 import RejectButton from "../component/postCard/RejectButton";
 import ApproveButton from "../component/postCard/ApproveButton";
 import BottomNavigationBar from "../component/BottomNavigationBar";
+import Pic from "../assets/postPIC.png"
+import Pic2 from "../assets/profilePIC.png"
+import Header from "../component/header/Header";
+
 
 const MainWrapper = styled.div`
   margin: 10px;
@@ -34,12 +38,13 @@ const CardBox = styled.div`
 const RequestAdPage = () => {
     return (
         <>
+            <Header renderBackArrowButton={true} title="Memting"/>
             <MainWrapper>
                 <CardBox>
-                    <Profile nickname='Agust D' coinvaluebtn={false}/>
-                    <TextBox></TextBox>
+                    <Profile nickname='MinSuga' approveBtn={false} coinValueBtn={false} profilePIC={Pic} />
+                    <TextBox text={"Hello! My name is Agust D!" }></TextBox>
                     <SubMainWrapper>
-                        <PostCard coinvaluebtn={true} approvebtn={false}/>
+                        <PostCard approveBtn={false} coinvaluebtn={true} approvebtn={false} profilePIC={Pic2}/>
                     </SubMainWrapper>
                     <RejectButton/>
                     <ApproveButton/>

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import PostCard from "../component/postCard/PostCard";
 import BottomNavigationBar from "../component/BottomNavigationBar";
 import Header from "../component/header/Header";
-
+import pic from "../assets/profilePIC.png"
 const MainWrapper = styled.div`
   margin: 15px;
   position: relative;
@@ -15,10 +15,10 @@ const MainWrapper = styled.div`
 const PostListPage = () => {
     return (
         <>
-            <Header renderBackArrowButton='false' title='MMemting'  renderWritingPostButton='true'/>
+            <Header renderBackArrowButton={false} title='Memting'  renderWritingPostButton={true}/>
             <MainWrapper>
-                <PostCard approvebtn={false} coinvaluebtn={false}/>
-                <PostCard approvebtn={false} coinvaluebtn={false}/>
+                <PostCard profilePIC={pic} approveBtn={false} coinValueBtn={false} chooseMenuBtn={true}/>
+                <PostCard profilePIC={pic} approveBtn={false} coinValueBtn={false} chooseMenuBtn={true}/>
             </MainWrapper>
             <BottomNavigationBar/>
         </>

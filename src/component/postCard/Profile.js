@@ -1,5 +1,4 @@
 import React from "react";
-import profilePIC from "../../assets/profilePIC.png"
 import styled from "styled-components";
 import UserCoinValue from "./UserCoinValue";
 import {AiFillCheckCircle} from "react-icons/ai";
@@ -24,20 +23,18 @@ const NickName = styled.div`
   font-weight: bold;
 `
 
-const Profile = ({nickname,coinvaluebtn=true}) => {
+
+const Profile = ({profilePIC,nickname, coinValueBtn = true, chooseMenuBtn=false}) => {
     return (
         <div>
-
             <Img src={profilePIC}></Img>
+
             <NickName>
                 {nickname}
             </NickName>
             <>
-                {coinvaluebtn===true?<UserCoinValue value={0.001}/>:<></>}
-                <ChooseMenu/>
-
+                {coinValueBtn === true ? <UserCoinValue value={0.001}/> : <> {chooseMenuBtn === true? <ChooseMenu style={{"margin": "10px"}}/>:<></>}</>}
             </>
-
         </div>
 
     )

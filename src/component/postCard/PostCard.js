@@ -6,7 +6,7 @@ import TextBox from "./TextBox";
 import ImgBox from "./ImgBox";
 import ApproveButton from "./ApproveButton";
 import RejectButton from "./RejectButton";
-
+import PostPIC from "../../assets/postPIC.png"
 const CardBox = styled.div`
   width: 100%;
   background-color: white;
@@ -17,15 +17,15 @@ const CardBox = styled.div`
   margin-top:5px;
   margin-bottom: 5px;
 `
-const PostCard = ({nickname, text, url, approvebtn = true, coinvaluebtn = true}) => {
+const PostCard = ({profilePIC, nickname="Agust D", text="hi hi", url=PostPIC, approveBtn = true, coinValueBtn = true,chooseMenuBtn=false}) => {
     return (
         <CardBox>
-            <Profile nickname={nickname} coinvaluebtn={coinvaluebtn}/>
+            <Profile profilePIC={profilePIC} nickname={nickname} coinValueBtn={coinValueBtn} chooseMenuBtn={chooseMenuBtn}/>
 
             <TextBox text={text} />
 
             <ImgBox url={url} />
-            <>{approvebtn === true ?
+            <>{approveBtn === true ?
                 <><RejectButton/>
                 <ApproveButton/> </>:<div></div>}
             </>
