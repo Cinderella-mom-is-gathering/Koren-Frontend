@@ -15,7 +15,9 @@ const MainWrapper = styled.div`
 const PostListPage = () => {
     return (
         <>
+
             <Header renderBackArrowButton={false} title='Memting'  renderWritingPostButton={true}/>
+
             <MainWrapper>
                 <PostCard profilePIC={pic} approveBtn={false} coinValueBtn={false} chooseMenuBtn={true}/>
                 <PostCard profilePIC={pic} approveBtn={false} coinValueBtn={false} chooseMenuBtn={true}/>
