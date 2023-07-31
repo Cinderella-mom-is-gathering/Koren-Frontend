@@ -20,7 +20,7 @@ const NickName = styled.div`
   font-weight: bold;
 `
 
-const Profile = ({nickname}) => {
+const Profile = ({nickname,coinvaluebtn=true}) => {
     return (
         <div>
 
@@ -28,7 +28,8 @@ const Profile = ({nickname}) => {
             <NickName>
                 {nickname}
             </NickName>
-            <UserCoinValue value={0.001}/>
+            <>{coinvaluebtn===true?<UserCoinValue value={0.001}/>:<></>}</>
+
         </div>
 
     )

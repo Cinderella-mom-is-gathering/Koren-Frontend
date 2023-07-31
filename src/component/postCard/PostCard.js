@@ -15,15 +15,17 @@ const CardBox = styled.div`
   box-shadow: 0px 2px 3px 0.5px #D5D5D5;
   border-radius: 5px;
 `
-const PostCard = () => {
+const PostCard = ({approvebtn = true, coinvaluebtn = true}) => {
     return (
         <CardBox>
-            <Profile nickname='Agust D'/>
+            <Profile nickname='Agust D' coinvaluebtn={coinvaluebtn}/>
             <TextBox></TextBox>
 
             <ImgBox></ImgBox>
-            <RejectButton/>
-            <ApproveButton/>
+            <>{approvebtn === true ?
+                <><RejectButton/>
+                <ApproveButton/> </>:<div></div>}
+            </>
         </CardBox>
     )
 }
