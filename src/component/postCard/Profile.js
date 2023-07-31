@@ -2,6 +2,9 @@ import React from "react";
 import profilePIC from "../../assets/profilePIC.png"
 import styled from "styled-components";
 import UserCoinValue from "./UserCoinValue";
+import {AiFillCheckCircle} from "react-icons/ai";
+import ChooseMenu from "./ChooseMenu";
+import Example from "../Test";
 
 const Img = styled.img`
   border-radius: 100px;
@@ -31,6 +34,8 @@ const Profile = ({nickname,coinvaluebtn=true}) => {
             </NickName>
             <>
                 {coinvaluebtn===true?<UserCoinValue value={0.001}/>:<></>}
+                <ChooseMenu/>
+
             </>
 
         </div>

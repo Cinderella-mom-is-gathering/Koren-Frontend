@@ -2,7 +2,7 @@
 
 import './App.css';
 
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import PostListPage from "./page/PostListPage";
 import PostDetailPage from "./page/PostDetailPage";
 import AddPostPage from "./page/AddPostPage";
