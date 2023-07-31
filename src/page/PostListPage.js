@@ -13,7 +13,7 @@ const MainWrapper = styled.div`
 const PostListPage = () => {
     return (
         <MainWrapper>
-            <PostCard/>
+            <PostCard approvebtn={true} coinvaluebtn={true}/>
         </MainWrapper>
 
     )

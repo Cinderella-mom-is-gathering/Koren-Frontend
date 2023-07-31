@@ -15,7 +15,7 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
-          <Route path="/posts" element={<PostListPage />} />
+          <Route path="/posts" element={<PostListPage/>} />
           <Route path="/posts/:postId" element={<PostDetailPage />} />
           <Route path="/posts/add" element={<AddPostPage />} />
           <Route path="/posts/:postId/nft" element={<PostNFTInfoPage />} />
