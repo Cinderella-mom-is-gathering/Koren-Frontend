@@ -6,6 +6,7 @@ import TextBox from "../component/postCard/TextBox";
 import ImgBox from "../component/postCard/ImgBox";
 import RejectButton from "../component/postCard/RejectButton";
 import ApproveButton from "../component/postCard/ApproveButton";
+import BottomNavigationBar from "../component/BottomNavigationBar";
 
 const MainWrapper = styled.div`
   margin: 10px;
@@ -14,13 +15,13 @@ const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `
-const SubMainWrapper=styled.div`
+const SubMainWrapper = styled.div`
   margin: 10px;
   position: relative;
 
   display: flex;
   flex-direction: column;
-  
+
 `
 const CardBox = styled.div`
   width: 100%;
@@ -32,19 +33,21 @@ const CardBox = styled.div`
 `
 const RequestAdPage = () => {
     return (
-        <MainWrapper>
-        <CardBox>
-            <Profile nickname='Agust D' coinvaluebtn={false}/>
-            <TextBox></TextBox>
-        <SubMainWrapper>
-            <PostCard coinvaluebtn={true} approvebtn={false}/>
-        </SubMainWrapper>
-            <RejectButton/>
-            <ApproveButton/>
+        <>
+            <MainWrapper>
+                <CardBox>
+                    <Profile nickname='Agust D' coinvaluebtn={false}/>
+                    <TextBox></TextBox>
+                    <SubMainWrapper>
+                        <PostCard coinvaluebtn={true} approvebtn={false}/>
+                    </SubMainWrapper>
+                    <RejectButton/>
+                    <ApproveButton/>
 
-        </CardBox>
-        </MainWrapper>
-
+                </CardBox>
+            </MainWrapper>
+            <BottomNavigationBar/>
+        </>
 
     )
 }
