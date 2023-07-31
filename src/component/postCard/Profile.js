@@ -1,6 +1,7 @@
 import React from "react";
 
 import styled from "styled-components";
+import UserCoinValue from "./UserCoinValue";
 
 const Img = styled.img`
   border-radius: 100px;
@@ -27,6 +28,7 @@ const Profile = ({nickname}) => {
             <NickName>
                 {nickname}
             </NickName>
+            <UserCoinValue value={0.001}/>
         </div>
 
     )

@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Profile from "./Profile";
 import TextBox from "./TextBox";
 import ImgBox from "./ImgBox";
+import ApproveButton from "./ApproveButton";
+import RejectButton from "./RejectButton";
 
 const CardBox = styled.div`
   width: 100%;
@@ -18,7 +20,10 @@ const PostCard = () => {
         <CardBox>
             <Profile nickname='Agust D'/>
             <TextBox></TextBox>
+
             <ImgBox></ImgBox>
+            <RejectButton/>
+            <ApproveButton/>
         </CardBox>
     )
 }
