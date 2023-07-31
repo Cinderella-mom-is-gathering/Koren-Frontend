@@ -5,7 +5,8 @@
 
 import {Wallet} from "../near-wallet";
 import logger from "./Logger";
-const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS;
+import {Environment} from "./Environment";
+const CONTRACT_ADDRESS = Environment.CONTRACT_ADDRESS;
 const wallet = new Wallet({createAccessKeyFor: CONTRACT_ADDRESS});
 
 /**

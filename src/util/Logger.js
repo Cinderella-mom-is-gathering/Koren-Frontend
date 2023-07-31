@@ -1,7 +1,8 @@
 import log from 'loglevel'
+import {Environment} from "./Environment";
 
 //debug, info, warn, error
-const level = process.env.REACT_APP_LOGGING_LEVEL || "info";
+const level = Environment.LOGGING_LEVEL;
 //console.log("logging-level: "+level);
 log.setLevel(level);
 const logger = log.getLogger('App');
