@@ -47,11 +47,11 @@ const TableRow = ({ label, value }) => (
     </tr>
 );
 
-const PostNFTInfoPage = () => {
+const ProfilePage = () => {
     return (
         <div>
             <Header
-            title="NFT 정보"
+            title="내 정보"
             renderBackArrowButton={true}
             renderWritingPostButton={false}
             />
@@ -87,4 +87,4 @@ const PostNFTInfoPage = () => {
     );
 };
 
-export default PostNFTInfoPage;
+export default ProfilePage;
