@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import { MdPhoto } from "react-icons/md";
 
 const TextInputBottomBarWrapper = styled.div`
   position: fixed;
-  bottom: 0;
+  bottom: ${(props) => props.height}px;
   width: 100%;
   height: 70px;
   display: flex;
@@ -19,13 +20,15 @@ const AddImageButton = styled.div`
   width: 45px;
   height: 45px;
   border-radius: 50%;
-    background-color: #5686E3;
-  
+  background-color: #5686e3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const AddPostButton = styled.div`
-    width: 45px;
-    height: 45px;
+  width: 45px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,13 +43,15 @@ const Text = styled.div`
   align-items: center;
 `;
 
-export const TextInputBottomBar = () => {
+export const TextInputBottomBar = ({ height }) => {
   return (
-    <TextInputBottomBarWrapper>
-      <AddImageButton></AddImageButton>
-        <AddPostButton>
-            <Text>{"등록"}</Text>
-        </AddPostButton>
+    <TextInputBottomBarWrapper height={height}>
+      <AddImageButton>
+        <MdPhoto size={20} color={"#ffffff"} />
+      </AddImageButton>
+      <AddPostButton>
+        <Text>{"등록"}</Text>
+      </AddPostButton>
     </TextInputBottomBarWrapper>
   );
 };
