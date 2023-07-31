@@ -8,7 +8,7 @@ const Crop = styled.img`
   width: 90%;
   height: 80%;
 
- object-fit: cover;
+  object-fit: cover;
   object-position: initial;
   margin-right: 20px;
 
