@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import BackArrow from "../../assets/back-arrow.png";
 import BackArrowButton from "./BackArrowButton";
-import {ButtonWrapper} from "./ButtonWrapper";
 import WritingPostButton from "./WritingPostButton";
 import RegistrationButton from "./RegistrationButton";
+import ButtonWrapper from "./ButtonWrapper";
 
 const TitleTab = styled.div`
   display: flex;
@@ -23,8 +23,6 @@ const HeaderWrapper = styled.header`
   border-bottom: 1px solid lightgray;
 `
 const Header = (props) => {
-
-
     const renderBackArrowButton = props.renderBackArrowButton;
     const renderWritingPostButton = props.renderWritingPostButton;
     const renderRegistrationButton = props.renderRegistrationButton;
@@ -32,15 +30,8 @@ const Header = (props) => {
 
     const emptyTab = <ButtonWrapper/>;
 
-
     const leftTab = renderBackArrowButton ? <BackArrowButton/> : emptyTab;
-    let rightTab;
-
-    if (renderWritingPostButton) {
-        rightTab = <WritingPostButton/>;
-    } else if (renderRegistrationButton) {
-        rightTab = <RegistrationButton/>
-    }
+    const rightTab = renderWritingPostButton ? <WritingPostButton/> : emptyTab;
 
     return (
         <HeaderWrapper>
