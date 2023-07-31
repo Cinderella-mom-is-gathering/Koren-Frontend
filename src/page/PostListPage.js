@@ -4,7 +4,7 @@ import styled from "styled-components";
 import PostCard from "../component/postCard/PostCard";
 
 const MainWrapper = styled.div`
-  margin: 20px;
+  margin: 15px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -13,7 +13,8 @@ const MainWrapper = styled.div`
 const PostListPage = () => {
     return (
         <MainWrapper>
-            <PostCard approvebtn={true} coinvaluebtn={true}/>
+            <PostCard approvebtn={false} coinvaluebtn={true}/>
+
         </MainWrapper>
 
     )

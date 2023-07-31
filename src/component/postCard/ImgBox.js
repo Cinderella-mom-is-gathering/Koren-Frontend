@@ -5,8 +5,8 @@ import styled from "styled-components";
 const Crop = styled.img`
   margin-left: 20px;
   margin-top: 15px;
-  width: 300px;
-  height: 250px;
+  width: 90%;
+  height: 80%;
 
  object-fit: cover;
   object-position: initial;
