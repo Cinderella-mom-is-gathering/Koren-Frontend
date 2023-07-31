@@ -5,13 +5,14 @@ import styled from "styled-components";
 const TextAreaWrapper = styled.div`
   width: 100%;
   height: 100%;
+  flex: 1;
 `;
 
 const TextArea = styled.textarea`
   padding: 10px 20px;
   background-color: #fbfbfb;
   width: 100%;
-  height: 500px;
+  flex: 1;
   &:focus {
     outline: none;
   }
