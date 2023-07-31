@@ -7,11 +7,13 @@ import TextBox from '../component/postCard/TextBox';
 import ImgBox from '../component/postCard/ImgBox';
 import SubmitButton from '../component/SubmitButton';
 import Header from "../component/header/Header";
+import PostPIC from "../assets/postPIC.png" //이미지 불러오기
+import profilePIC from "../assets/profilePIC.png"
 
 const MainWrapper = styled.div`
-  margin: 20px;
+  margin: 15px;
   position: relative;
-  padding: 10px;
+
 
   display: flex;
   flex-direction: column;
@@ -40,51 +42,77 @@ const ValueCell = styled.td`
   /* value 셀에 별도 스타일이 필요 없으므로 아무 스타일도 지정하지 않음 */
 `;
 
+const BackImg = styled.img`
+  width: 100%;
+  height: 200px;
+  background-size: 50% 100%;
+
+  object-fit: cover;
+  object-position: initial;
+  margin-right: 20px;
+`
+const ProImg = styled.img`
+  border-radius: 100px;
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 10px;
+  position: absolute;
+  top: 220px;
+  left: 20px;
+`
+
+const ProBox = styled.div`
+  height: 240px;
+`
+
+const ProBox2 = styled.div`
+  margin-top: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
+  height: 50px;
+`
+
+const ProBox3 = styled.div`
+  margin-top: 15px;
+  height: 50px;
+`
+
 const TableRow = ({ label, value }) => (
-    <tr>
-        <LabelCell>{label}</LabelCell>
-        <ValueCell>{value}</ValueCell>
-    </tr>
+  <tr>
+    <LabelCell>{label}</LabelCell>
+    <ValueCell>{value}</ValueCell>
+  </tr>
 );
 
 const ProfilePage = () => {
-    return (
-        <div>
-            <Header
-            title="내 정보"
-            renderBackArrowButton={true}
-            renderWritingPostButton={false}
-            />
-            <MainWrapper>
-                <Profile nickname="Agust D" />
-                <TextBox />
-                <ImgBox />
-            </MainWrapper>
-            <div style={{ borderBottom: '1px solid #E9E9E9' }}></div>
-            <MainWrapper>
-                <TableWrapper>
-                    <Table>
-                        <tbody>
-                            <TableRow label="크리에이터" value="songsk" />
-                            <TableRow label="컨트랙트 주소" value="348f64fbg23f3f3f" />
-                            <TableRow label="토큰 ID" value="11" />
-                        </tbody>
-                    </Table>
-                </TableWrapper>
-            </MainWrapper>
-            <div style={{ borderBottom: '1px solid #E9E9E9' }}></div>
-            <MainWrapper>
-                <TableWrapper>
-                    <Table>
-                        <tbody>
-                            <TableRow label="가격" value="10.5 NEAR" />
-                        </tbody>
-                    </Table>
-                </TableWrapper>
-            </MainWrapper>
-            <SubmitButton content="NFT 요청하기" />
-        </div>
-    );
+  const repeatedSections = [1, 2, 3];
+
+  return (
+    <div>
+      <Header
+        title="내 정보"
+        renderBackArrowButton={true}
+        renderWritingPostButton={false}
+      />
+      <ProBox>
+        <BackImg src={PostPIC} />
+        <ProImg src={profilePIC} />
+      </ProBox>
+      <ProBox2>
+        <b>Agust D</b>
+        <ProBox3>안녕 나는 어거스트D슈가</ProBox3>
+      </ProBox2>
+      <MainWrapper>
+        {repeatedSections.map((index) => (
+          <PostCard approvebtn={false} coinvaluebtn={false} />
+        ))}
+      </MainWrapper>
+
+      <BottomNavigationBar />
+    </div>
+  );
 };
 
 export default ProfilePage;

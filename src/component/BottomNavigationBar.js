@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AiOutlineHome, AiOutlineBell } from 'react-icons/ai'; 
-import { MdOutlinePersonOutline } from 'react-icons/md'; 
+import { AiOutlineHome, AiOutlineBell } from 'react-icons/ai';
+import { MdOutlinePersonOutline } from 'react-icons/md';
+import {useNavigate} from "react-router-dom";
+import logger from "../util/Logger";
 
 const StyledFooter = styled.div`
   display: flex;
@@ -28,15 +30,30 @@ const Button = styled.button`
 `;
 
 const BottomNavigationBar = () => {
+
+  const navigate = useNavigate();
+  const HomeButtonHandler = () => {
+    logger.debug("HomeButton Clicked!");
+    navigate('/posts');
+  };
+  const BellButtonHandler = () => {
+    logger.debug("BellButton Clicked!");
+    navigate('/advertisements/add');
+  };
+  const PersonButtonHandler = () => {
+    logger.debug("PersonButton Clicked!");
+    navigate('/profile');
+  };
+
   return (
     <StyledFooter>
-      <Button type='button'>
+      <Button onClick={HomeButtonHandler}>
         <AiOutlineHome />
       </Button>
-      <Button type='button'>
+      <Button onClick={BellButtonHandler}>
         <AiOutlineBell />
       </Button>
-      <Button type='button'>
+      <Button onClick={PersonButtonHandler}>
         <MdOutlinePersonOutline />
       </Button>
     </StyledFooter>
