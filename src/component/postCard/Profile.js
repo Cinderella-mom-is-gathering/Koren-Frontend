@@ -1,5 +1,5 @@
 import React from "react";
-
+import profilePIC from "../../assets/profilePIC.png"
 import styled from "styled-components";
 import UserCoinValue from "./UserCoinValue";
 
@@ -14,7 +14,8 @@ const Img = styled.img`
 `
 const NickName = styled.div`
   display: inline-block;
-  flex-direction: column;
+  vertical-align: top;
+  padding-top: 4px;
   margin: 5px;
   font-size: 15px;
   font-weight: bold;
@@ -24,11 +25,13 @@ const Profile = ({nickname,coinvaluebtn=true}) => {
     return (
         <div>
 
-            <Img src="profilePIC.png"></Img>
+            <Img src={profilePIC}></Img>
             <NickName>
                 {nickname}
             </NickName>
-            <>{coinvaluebtn===true?<UserCoinValue value={0.001}/>:<></>}</>
+            <>
+                {coinvaluebtn===true?<UserCoinValue value={0.001}/>:<></>}
+            </>
 
         </div>
 

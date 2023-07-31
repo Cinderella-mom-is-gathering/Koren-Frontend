@@ -1,5 +1,5 @@
 import React from "react";
-
+import PostPIC from "../../assets/postPIC.png"
 import styled from "styled-components";
 
 const Crop = styled.img`
@@ -18,7 +18,7 @@ const Crop = styled.img`
 const ImgBox = () => {
     return (
         <div>
-            <Crop src='postPIC.png'>
+            <Crop src={PostPIC}>
             </Crop>
         </div>
     )
