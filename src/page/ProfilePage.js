@@ -1,5 +1,7 @@
 import React from 'react';
+import BottomNavigationBar from '../component/BottomNavigationBar';
 import styled from 'styled-components';
+import PostCard from '../component/postCard/PostCard';
 import Profile from '../component/postCard/Profile';
 import TextBox from '../component/postCard/TextBox';
 import ImgBox from '../component/postCard/ImgBox';
@@ -45,22 +47,16 @@ const TableRow = ({ label, value }) => (
     </tr>
 );
 
-const CompleteAddPostPage = () => {
+const ProfilePage = () => {
     return (
         <div>
             <Header
-                title=""
-                renderBackArrowButton={true}
-                renderWritingPostButton={false}
+            title="내 정보"
+            renderBackArrowButton={true}
+            renderWritingPostButton={false}
             />
             <MainWrapper>
-                <h1><b>등록이 완료되었습니다!</b></h1>
-            </MainWrapper>
-            <MainWrapper>
-                <h4><b>NFT정보</b></h4>
-            </MainWrapper>
-            <MainWrapper>
-                <Profile nickname="Agust D" coinvaluebtn='false' />
+                <Profile nickname="Agust D" />
                 <TextBox />
                 <ImgBox />
             </MainWrapper>
@@ -76,9 +72,19 @@ const CompleteAddPostPage = () => {
                     </Table>
                 </TableWrapper>
             </MainWrapper>
-            <SubmitButton content="확인" />
+            <div style={{ borderBottom: '1px solid #E9E9E9' }}></div>
+            <MainWrapper>
+                <TableWrapper>
+                    <Table>
+                        <tbody>
+                            <TableRow label="가격" value="10.5 NEAR" />
+                        </tbody>
+                    </Table>
+                </TableWrapper>
+            </MainWrapper>
+            <SubmitButton content="NFT 요청하기" />
         </div>
     );
 };
 
-export default CompleteAddPostPage;
+export default ProfilePage;
