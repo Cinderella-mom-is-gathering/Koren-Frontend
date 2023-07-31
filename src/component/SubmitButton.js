@@ -6,7 +6,7 @@ const Button = styled.button`
   -moz-appearance: none;
   appearance: none;
   border: none;
-  position:absolute;
+  position:fixed;
   bottom:0;
   width:100%;
   height:70px;
@@ -20,9 +20,7 @@ const Button = styled.button`
 const SubmitButton=({content})=> {
     return (
         <form>
-
         <Button type='button'> {content} </Button>
-
         </form>
     );
 }
