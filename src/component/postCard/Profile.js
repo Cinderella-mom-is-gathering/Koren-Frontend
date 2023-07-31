@@ -1,6 +1,7 @@
 import React from "react";
 
 import styled from "styled-components";
+import UserCoinValue from "./UserCoinValue";
 
 const Img = styled.img`
   border-radius: 100px;
@@ -19,7 +20,7 @@ const NickName = styled.div`
   font-weight: bold;
 `
 
-const Profile = ({nickname}) => {
+const Profile = ({nickname,coinvaluebtn=true}) => {
     return (
         <div>
 
@@ -27,6 +28,8 @@ const Profile = ({nickname}) => {
             <NickName>
                 {nickname}
             </NickName>
+            <>{coinvaluebtn===true?<UserCoinValue value={0.001}/>:<></>}</>
+
         </div>
 
     )
