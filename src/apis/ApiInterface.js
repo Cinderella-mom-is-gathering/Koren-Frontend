@@ -4,12 +4,9 @@ import logger from "../util/Logger";
 import {executeMockContractMethod} from "./mock/mock";
 
 const connection = process.env.REACT_APP_CONNECTION || 'wallet';
-const mockServerHost = process.env.REACT_APP_MOCK_SERVER_HOST || 'localhost';
-const mockServerPort = process.env.REACT_APP_MOCK_SERVER_PORT || '4000';
 
 //log
 logger.debug("Connection Level:",connection);
-logger.debug("Mocking Server Info:",mockServerHost,mockServerPort);
 
 /**
  * Greeting
