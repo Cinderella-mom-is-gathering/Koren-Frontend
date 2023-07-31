@@ -25,7 +25,6 @@ const HeaderWrapper = styled.header`
 const Header = (props) => {
     const renderBackArrowButton = props.renderBackArrowButton;
     const renderWritingPostButton = props.renderWritingPostButton;
-    const renderRegistrationButton = props.renderRegistrationButton;
     const title = props.title;
 
     const emptyTab = <ButtonWrapper/>;
