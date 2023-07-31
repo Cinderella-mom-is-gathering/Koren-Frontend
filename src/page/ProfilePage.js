@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BottomNavigationBar from '../component/BottomNavigationBar';
 import styled from 'styled-components';
 import PostCard from '../component/postCard/PostCard';
@@ -9,6 +9,9 @@ import SubmitButton from '../component/SubmitButton';
 import Header from "../component/header/Header";
 import PostPIC from "../assets/postPIC.png" //이미지 불러오기
 import profilePIC from "../assets/profilePIC.png"
+// import * as WalletUtil from "../util/WalletUtil";
+import {Environment} from "../util/Environment";
+const CONTRACT_ADDRESS = Environment.CONTRACT_ADDRESS;
 
 const MainWrapper = styled.div`
   margin: 15px;
@@ -79,6 +82,8 @@ const ProBox3 = styled.div`
   height: 50px;
 `
 
+// console.log("아이디 : ", WalletUtil.getAccountId());
+
 const TableRow = ({ label, value }) => (
   <tr>
     <LabelCell>{label}</LabelCell>
@@ -86,8 +91,22 @@ const TableRow = ({ label, value }) => (
   </tr>
 );
 
-const ProfilePage = () => {
+const realName=(account) =>(
+  account.split(".")[0]
+)
+
+const callPostCard=(e)=>(console.log(e));
+
+const ProfilePage = ({wallet}) => {
   const repeatedSections = [1, 2, 3];
+  const myName='rla'
+  // const myName=realName(wallet.accountId);
+  let [myNFTs, setMyNFTs] = useState([]);
+  
+  useEffect(()=>{
+  wallet.viewMethod({contractId:CONTRACT_ADDRESS, method:"nft_tokens_for_owner",args:{account_id:"kkhmsg05.testnet"}})
+  .then(setMyNFTs);}
+  ,[]);
 
   return (
     <div>
@@ -101,13 +120,14 @@ const ProfilePage = () => {
         <ProImg src={profilePIC} />
       </ProBox>
       <ProBox2>
-        <b>Agust D</b>
+        <b>{myName}</b>
         <ProBox3>안녕 나는 어거스트D슈가</ProBox3>
       </ProBox2>
       <MainWrapper>
-        {repeatedSections.map((index) => (
-          <PostCard approvebtn={false} coinvaluebtn={false} />
-        ))}
+        {myNFTs.map((e)=><PostCard nickname={realName(e.owner_id)} text={e.metadata.description} url={e.metadata.media} approvebtn={false} coinvaluebtn={false} />)}
+        {/* {repeatedSections.map((index) => (
+          <PostCard nickname={myName} text={index} approvebtn={false} coinvaluebtn={false} />
+        ))} */}
       </MainWrapper>
 
       <BottomNavigationBar />

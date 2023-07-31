@@ -8,11 +8,12 @@ const Box=styled.div`
   margin-right:20px;
 `
 
-const TextBox=()=>{
+const TextBox=({text})=>{
     return(
         <Box>
-            Hello! My name is Agust D!<br/>
-            Something I don't like too much. If you like it too much, you can't do it for a long time. But I really liked it.
+            {text}
+            {/* Hello! My name is Agust D!<br/> */}
+            {/* Something I don't like too much. If you like it too much, you can't do it for a long time. But I really liked it. */}
         </Box>
 
     )
