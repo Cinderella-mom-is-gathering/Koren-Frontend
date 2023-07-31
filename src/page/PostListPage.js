@@ -2,6 +2,7 @@ import React from "react";
 
 import styled from "styled-components";
 import PostCard from "../component/postCard/PostCard";
+import BottomNavigationBar from "../component/BottomNavigationBar";
 
 const MainWrapper = styled.div`
   margin: 15px;
@@ -12,10 +13,13 @@ const MainWrapper = styled.div`
 
 const PostListPage = () => {
     return (
-        <MainWrapper>
-            <PostCard approvebtn={false} coinvaluebtn={true}/>
+        <>
+            <MainWrapper>
+                <PostCard approvebtn={false} coinvaluebtn={true}/>
 
-        </MainWrapper>
+            </MainWrapper>
+            <BottomNavigationBar/>
+        </>
 
     )
 }

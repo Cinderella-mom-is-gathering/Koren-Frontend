@@ -1,6 +1,5 @@
 
 import './App.css';
-import PersonalInfo from "./page/PersonalInfo";
 import PostListPage from "./page/PostListPage";
 import PostDetailPage from "./page/PostDetailPage";
 import AddPostPage from "./page/AddPostPage";
