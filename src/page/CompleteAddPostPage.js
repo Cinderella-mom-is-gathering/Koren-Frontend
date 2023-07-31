@@ -5,6 +5,7 @@ import TextBox from '../component/postCard/TextBox';
 import ImgBox from '../component/postCard/ImgBox';
 import SubmitButton from '../component/SubmitButton';
 import Header from "../component/header/Header";
+import PIC from "../assets/profilePIC.png"
 
 const MainWrapper = styled.div`
   margin: 20px;
@@ -60,7 +61,7 @@ const CompleteAddPostPage = () => {
                 <h4><b>NFT정보</b></h4>
             </MainWrapper>
             <MainWrapper>
-                <Profile nickname="Agust D" coinvaluebtn='false' />
+                <Profile profilePIC={PIC} nickname="Agust D" approveBtn={false} coinValueBtn={false} chooseMenuBtn={false}/>
                 <TextBox />
                 <ImgBox />
             </MainWrapper>

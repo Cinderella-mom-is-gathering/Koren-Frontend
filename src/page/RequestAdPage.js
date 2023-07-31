@@ -41,7 +41,7 @@ const RequestAdPage = () => {
             <Header renderBackArrowButton={true} title="Memting"/>
             <MainWrapper>
                 <CardBox>
-                    <Profile nickname='MinSuga' approveBtn={false} coinValueBtn={false} profilePIC={Pic} />
+                    <Profile nickname='MinSuga'  coinValueBtn={false} profilePIC={Pic} />
                     <TextBox text={"Hello! My name is Agust D!" }></TextBox>
                     <SubMainWrapper>
                         <PostCard approveBtn={false} coinvaluebtn={true} approvebtn={false} profilePIC={Pic2}/>

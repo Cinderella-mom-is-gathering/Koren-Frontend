@@ -1,4 +1,5 @@
 import React from "react";
+import profilePIC from "../../assets/profilePIC.png"
 import styled from "styled-components";
 import UserCoinValue from "./UserCoinValue";
 import {AiFillCheckCircle} from "react-icons/ai";
@@ -24,7 +25,7 @@ const NickName = styled.div`
 `
 
 
-const Profile = ({profilePIC,nickname, coinValueBtn = true, chooseMenuBtn=false}) => {
+const Profile = ({profilePIC, nickname, coinValueBtn = true, chooseMenuBtn=false}) => {
     return (
         <div>
             <Img src={profilePIC}></Img>
