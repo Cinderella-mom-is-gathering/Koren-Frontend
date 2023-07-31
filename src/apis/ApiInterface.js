@@ -2,8 +2,9 @@ import {callMethod, executeContractMethod, viewMethod} from "../util/WalletUtil"
 import axios from "axios";
 import logger from "../util/Logger";
 import {executeMockContractMethod} from "./mock/mock";
+import {Environment} from "../util/Environment";
 
-const connection = process.env.REACT_APP_CONNECTION || 'wallet';
+const connection = Environment.CONNECTION;
 
 //log
 logger.debug("Connection Level:",connection);
