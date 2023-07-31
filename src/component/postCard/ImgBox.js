@@ -2,14 +2,14 @@ import React from "react";
 
 import styled from "styled-components";
 
-const Crop = styled.div`
+const Crop = styled.img`
   margin-left: 20px;
   margin-top: 15px;
   width: 300px;
-  height: 200px;
-  background-image: url("postPIC.png");
-  background-position: top;
-  background-size: 100%;
+  height: 250px;
+
+ object-fit: cover;
+  object-position: initial;
   margin-right: 20px;
 
 `
@@ -18,8 +18,7 @@ const Crop = styled.div`
 const ImgBox = () => {
     return (
         <div>
-            <Crop>
-
+            <Crop src='postPIC.png'>
             </Crop>
         </div>
     )
