@@ -10,7 +10,7 @@ margin:20px;
 const AddPostPage=()=>{
     return(
         <div>
-
+            AddPostPage
         </div>
     )
 }
