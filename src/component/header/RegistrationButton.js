@@ -1,4 +1,4 @@
-import {ButtonWrapper} from "./ButtonWrapper";
+import ButtonWrapper from "./ButtonWrapper";
 import Img from "../../assets/back-arrow.png";
 
 const RegistrationButton = () => {
@@ -8,5 +8,4 @@ const RegistrationButton = () => {
         </ButtonWrapper>
     );
 }
-
 export default RegistrationButton;

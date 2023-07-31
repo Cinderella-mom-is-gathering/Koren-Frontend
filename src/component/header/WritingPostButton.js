@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Img from "../../assets/write-post.png"
-import {ButtonWrapper} from "./ButtonWrapper";
+import ButtonWrapper from "./ButtonWrapper";
+import {useNavigate} from "react-router-dom";
+import logger from "../../util/Logger";
 
 const WritingPostImg = styled.img`
   width:22px;
@@ -8,8 +10,14 @@ const WritingPostImg = styled.img`
 `
 const WritingPostButton = () => {
 
+    const navigate = useNavigate();
+    const onClickHandler = () => {
+        logger.debug("GoWritingPostPage clicked!");
+        navigate("/posts/add");
+    }
+
     return (
-        <ButtonWrapper>
+        <ButtonWrapper onClick={onClickHandler}>
             <WritingPostImg src={Img}/>
         </ButtonWrapper>
     );
