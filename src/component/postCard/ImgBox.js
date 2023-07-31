@@ -15,10 +15,10 @@ const Crop = styled.img`
 `
 
 
-const ImgBox = () => {
+const ImgBox = ({url}) => {
     return (
         <div>
-            <Crop src={PostPIC}>
+            <Crop src={url}>
             </Crop>
         </div>
     )
