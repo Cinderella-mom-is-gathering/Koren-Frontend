@@ -17,14 +17,14 @@ const CardBox = styled.div`
   margin-top:5px;
   margin-bottom: 5px;
 `
-const PostCard = ({approvebtn = true, coinvaluebtn = true}) => {
+const PostCard = ({nickname, text, url, approvebtn = true, coinvaluebtn = true}) => {
     return (
         <CardBox>
-            <Profile nickname='Agust D' coinvaluebtn={coinvaluebtn}/>
+            <Profile nickname={nickname} coinvaluebtn={coinvaluebtn}/>
 
-            <TextBox></TextBox>
+            <TextBox text={text} />
 
-            <ImgBox></ImgBox>
+            <ImgBox url={url} />
             <>{approvebtn === true ?
                 <><RejectButton/>
                 <ApproveButton/> </>:<div></div>}

@@ -8,7 +8,6 @@ import logger from "./Logger";
 import {Environment} from "./Environment";
 const CONTRACT_ADDRESS = Environment.CONTRACT_ADDRESS;
 const wallet = new Wallet({createAccessKeyFor: CONTRACT_ADDRESS});
-
 /**
  * Wallet 초기화
  * @returns {Promise<boolean>} 로그인 여부
@@ -52,14 +51,14 @@ export const executeContractMethod = async (method,args,gas,deposit) => {
         return await viewMethod(method, args);
     }
 }
-const viewMethod = async (method,args) => {
+export const viewMethod = async (method,args) => {
     logger.debug("[컨트랙트 호출] Method:",method,"args: ",args);
     let response = await wallet.viewMethod({method: method, contractId: CONTRACT_ADDRESS, args: args});
     logger.debug("[컨트랙트 호출 결과] (",method,args,")  Response : ",response);
     return response;
 }
 
-const callMethod = async (method,args,gas,deposit) => {
+export const callMethod = async (method,args,gas,deposit) => {
     logger.debug("[컨트랙트 호출] Method: ",method,"args:",args,"gas:",gas,"deposit:",deposit);
     let response = await wallet.callMethod({CONTRACT_ADDRESS, method, args, gas, deposit});
     logger.debug("[컨트랙트 호출 결과] (",method,args,") Response :",response);
