@@ -20,9 +20,7 @@ const Button = styled.button`
 const SubmitButton=({content})=> {
     return (
         <form>
-
         <Button type='button'> {content} </Button>
-
         </form>
     );
 }
