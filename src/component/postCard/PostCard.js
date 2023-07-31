@@ -14,6 +14,8 @@ const CardBox = styled.div`
   padding-bottom: 20px;
   box-shadow: 0px 2px 3px 0.5px #D5D5D5;
   border-radius: 5px;
+  margin-top:5px;
+  margin-bottom: 5px;
 `
 const PostCard = ({approvebtn = true, coinvaluebtn = true}) => {
     return (

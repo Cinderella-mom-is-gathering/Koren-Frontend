@@ -12,7 +12,7 @@ const StyledFooter = styled.div`
   left: 0;
   width: 100%;
   background-color: cornflowerblue;
-  padding: 10px 10%;
+  
   `;
 
 const Button = styled.button`
