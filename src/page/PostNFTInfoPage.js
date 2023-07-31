@@ -6,6 +6,7 @@ import Profile from '../component/postCard/Profile';
 import TextBox from '../component/postCard/TextBox';
 import ImgBox from '../component/postCard/ImgBox';
 import SubmitButton from '../component/SubmitButton';
+import Header from "../component/header/Header";
 
 const MainWrapper = styled.div`
   margin: 20px;
@@ -49,6 +50,11 @@ const TableRow = ({ label, value }) => (
 const PostNFTInfoPage = () => {
     return (
         <div>
+            <Header
+            title="NFT 정보"
+            renderBackArrowButton={true}
+            renderWritingPostButton={false}
+            />
             <MainWrapper>
                 <Profile nickname="Agust D" />
                 <TextBox />
