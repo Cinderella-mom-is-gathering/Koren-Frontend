@@ -1,8 +1,8 @@
 import React from "react";
-import profilePIC from "../../assets/profilePIC.png"
+import profilePIC from "../../assets/profilePIC.png";
 import styled from "styled-components";
 import UserCoinValue from "./UserCoinValue";
-import {AiFillCheckCircle} from "react-icons/ai";
+import { AiFillCheckCircle } from "react-icons/ai";
 import ChooseMenu from "./ChooseMenu";
 import Example from "../Test";
 
@@ -13,8 +13,7 @@ const Img = styled.img`
   display: inline-block;
   margin-left: 10px;
   margin-right: 10px;
-
-`
+`;
 const NickName = styled.div`
   display: inline-block;
   vertical-align: top;
@@ -22,29 +21,35 @@ const NickName = styled.div`
   margin: 5px;
   font-size: 15px;
   font-weight: bold;
-`
+`;
 const Wrapper = styled.div`
-    display: flex;
-  justify-content:space-between;
-`
+  display: flex;
+  justify-content: space-between;
+`;
 
-const Profile = ({coinValue, profilePIC, nickname, coinValueBtn = true, chooseMenuBtn=false}) => {
-    return (
-        <Wrapper>
-            <div>
+const Profile = ({
+  profilePIC,
+  nickname,
+  coinValueBtn = true,
+  chooseMenuBtn = false,
+}) => {
+  return (
+    <Wrapper>
+      <div>
+        <Img src={profilePIC}></Img>
 
-                <Img src={profilePIC}></Img>
+        <NickName>{nickname}</NickName>
+      </div>
 
-                <NickName>
-                    {nickname}
-                </NickName>
-            </div>
-
-                {coinValueBtn === true ? <UserCoinValue value={coinValue}/> : (chooseMenuBtn === true? <ChooseMenu />:<></>)}
-
-        </Wrapper>
-
-    )
-}
+      {coinValueBtn === true ? (
+        <UserCoinValue value={0.001} />
+      ) : chooseMenuBtn === true ? (
+        <ChooseMenu />
+      ) : (
+        <></>
+      )}
+    </Wrapper>
+  );
+};
 
 export default Profile;
