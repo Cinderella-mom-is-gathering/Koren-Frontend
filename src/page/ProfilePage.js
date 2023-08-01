@@ -11,6 +11,7 @@ import PostPIC from "../assets/postPIC.png" //이미지 불러오기
 import profilePIC from "../assets/profilePIC.png"
 import {Environment} from "../util/Environment";
 import * as Api from "../apis/ApiInterface";
+import { get } from 'https-browserify';
 
 const MainWrapper = styled.div`
   margin: 15px;
@@ -97,8 +98,8 @@ const realName=(account) =>(
 const callPostCard=(e)=>(console.log(e));
 
 const ProfilePage = () => {
-  const repeatedSections = [1, 2, 3];
-  const myName='rla'
+  const myName="내이름"
+  //const myName=realName(getMyAccountId())
   const myInstro='안녕 나는 어거스트D슈가'
   // const myName=realName(wallet.accountId);
   let [myNFTs, setMyNFTs] = useState([]);
@@ -129,7 +130,7 @@ const ProfilePage = () => {
         <ProBox3>{myInstro}</ProBox3>
       </ProBox2>
       <MainWrapper>
-        {myNFTs.map((e)=><PostCard nickname={realName(e.owner_id)} text={e.metadata.description} url={e.metadata.media} approvebtn={false} coinvaluebtn={false} />)}
+        {myNFTs.map((e)=><PostCard nickname={realName(e.owner_id)} text={e.metadata.description} url={e.metadata.media} approveBtn={false} coinvalueBtn={false} />)}
         {/* {repeatedSections.map((index) => (
           <PostCard nickname={myName} text={index} approvebtn={false} coinvaluebtn={false} />
         ))} */}
