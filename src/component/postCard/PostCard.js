@@ -36,7 +36,7 @@ const PostCard = ({
   postId,
     hearts=100,
     onClickHandler,
-    coinValue=0.01,
+    coinValue=0,
     requesterId
 }) => {
 
