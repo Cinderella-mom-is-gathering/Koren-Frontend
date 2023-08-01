@@ -7,6 +7,11 @@ import ImgBox from "./ImgBox";
 import ApproveButton from "./ApproveButton";
 import RejectButton from "./RejectButton";
 import PostPIC from "../../assets/postPIC.png";
+
+import HeartButton from "./HeartButton";
+import profilePic from "../../assets/nonpic.png"
+
+
 const CardBox = styled.div`
   width: 100%;
   background-color: white;
@@ -21,23 +26,27 @@ const CardBox = styled.div`
 `;
 
 const PostCard = ({
-  profilePIC,
-  nickname = "Agust D",
-  text = "hi hi",
+  profilePIC=profilePic,
+  nickname = "",
+  text = "",
   url,
   approveBtn = true,
   coinValueBtn = true,
   chooseMenuBtn = false,
-  coinValue=0.001,
+  postId,
+    hearts=100,
+    coinValue=0.01,
+    onClickHandler
 }) => {
   return (
-    <CardBox>
+    <CardBox onClick={onClickHandler}>
       <Profile
         coinValue={coinValue}
         profilePIC={profilePIC}
         nickname={nickname}
         coinValueBtn={coinValueBtn}
         chooseMenuBtn={chooseMenuBtn}
+        postId={postId}
       />
       <TextBox text={text} />
       <ImgBox url={url} />
@@ -50,7 +59,10 @@ const PostCard = ({
         ) : (
           <div></div>
         )}
+
       </>
+        <HeartButton hearts={100}/>
+
     </CardBox>
   );
 };
