@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import TextBox from "./TextBox";
-import ImgBox from "./ImgBox";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import * as Api from "../../apis/ApiInterface";
 
 const Button2 = styled.button`
   width: 95px;
@@ -41,11 +40,17 @@ function MyVerticallyCenteredModal(props) {
   );
 }
 
-const ApproveButton = () => {
+const ApproveButton = (props) => {
   const [modalShow, setModalShow] = React.useState(false);
 
+  const onClickHandler = () => {
+    Api.approveAdRequest(props.postId,props.requesterId).then(() => {
+          setModalShow(true);
+    });
+  }
+
   return (<>
-    <Button2 variant="primary" onClick={() => setModalShow(true)}>
+    <Button2 variant="primary" onClick={onClickHandler}>
       승인
     </Button2>
 

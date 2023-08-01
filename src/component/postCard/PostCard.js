@@ -36,7 +36,8 @@ const PostCard = ({
   postId,
     hearts=100,
     onClickHandler,
-    coinValue=0.01
+    coinValue=0.01,
+    requesterId
 }) => {
 
     return (
@@ -55,8 +56,8 @@ const PostCard = ({
       <>
         {approveBtn === true ? (
           <>
-            <RejectButton postId={postId} />
-            <ApproveButton />{" "}
+            <RejectButton postId={postId} requesterId={requesterId} />
+            <ApproveButton postId={postId} requesterId={requesterId} />{" "}
           </>
         ) : (
           <div></div>
@@ -64,7 +65,6 @@ const PostCard = ({
 
       </>
         <HeartButton hearts={hearts}/>
-
     </CardBox>
   );
 };
