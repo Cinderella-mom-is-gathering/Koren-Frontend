@@ -18,11 +18,11 @@ const TextArea = styled.textarea`
   }
   border: none;
 `;
-export const TextInput = ({ contents, setContents }) => {
+export const TextInput = ({ contents, setContents, isOnFocus }) => {
   const inputRef = React.useRef(null);
 
   useLayoutEffect(() => {
-    if (inputRef.current !== null) inputRef.current.focus();
+    if (inputRef.current !== null && isOnFocus) inputRef.current.focus();
   });
 
   return (

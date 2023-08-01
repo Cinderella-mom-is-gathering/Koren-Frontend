@@ -63,7 +63,11 @@ const AddPostPage = () => {
   return (
     <AddTextInputPageWrapper>
       <Header renderBackArrowButton={true} title="포스트 작성" />
-      <TextInput contents={contents} setContents={setContents} />
+      <TextInput
+        contents={contents}
+        setContents={setContents}
+        isOnFocus={true}
+      />
       <TextInputBottomBar
         height={height}
         setImageFile={setImageFiles}
