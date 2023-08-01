@@ -7,6 +7,7 @@ import ImgBox from "./ImgBox";
 import ApproveButton from "./ApproveButton";
 import RejectButton from "./RejectButton";
 import PostPIC from "../../assets/postPIC.png";
+
 const CardBox = styled.div`
   width: 100%;
   background-color: white;
@@ -28,6 +29,7 @@ const PostCard = ({
   approveBtn = true,
   coinValueBtn = true,
   chooseMenuBtn = false,
+  postId,
 }) => {
   return (
     <CardBox>
@@ -36,6 +38,7 @@ const PostCard = ({
         nickname={nickname}
         coinValueBtn={coinValueBtn}
         chooseMenuBtn={chooseMenuBtn}
+        postId={postId}
       />
       <TextBox text={text} />
       <ImgBox url={url} />

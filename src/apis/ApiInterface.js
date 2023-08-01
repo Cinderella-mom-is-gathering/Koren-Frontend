@@ -42,9 +42,9 @@ export const getPostByToken = async (tokenId) => {
 };
 
 export const getFeed = async () => {
-    let count = await countPosts();
-    return await getPosts(count-20,20);
-}
+  let count = await countPosts();
+  return await getPosts(count - 20, 20);
+};
 
 export const getLatestPostByUser = async (accountId) => {
   let count = await countPostsByUser(accountId);
@@ -95,14 +95,15 @@ export const getMyAdRequest = async () => {
  * @param imgArr
  * @returns {Promise<string|undefined|*>}
  */
-export const createAdRequest = async (postTokenId, imgArr, cost) => {
-  const deposit = utils.format.parseNearAmount((0.1 + cost).toString());
+export const createAdRequest = async (postTokenId, contents, imgArr, cost) => {
+  const deposit = utils.format.parseNearAmount(cost.toString());
   const args = {
     token_id: postTokenId,
+    description: contents,
     img: imgArr,
   };
 
-  return await send(Method.CALL, "request_ads", args, deposit);
+  return await send(Method.CALL, "request_ad", args, deposit);
 };
 
 export const getMyPosts = async (index, limit) => {
