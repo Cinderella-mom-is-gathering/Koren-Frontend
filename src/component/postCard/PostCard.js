@@ -34,7 +34,8 @@ const PostCard = ({
   coinValueBtn = true,
   chooseMenuBtn = false,
   postId,
-    hearts=100
+    hearts=100,
+                      coinValue=0.01
 }) => {
   return (
     <CardBox>
