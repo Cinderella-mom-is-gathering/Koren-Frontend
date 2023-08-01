@@ -1,8 +1,10 @@
 {
   "files": {
     "main.css": "/Meme/static/css/main.76839bfb.css",
-    "main.js": "/Meme/static/js/main.45cf4e67.js",
+    "main.js": "/Meme/static/js/main.cd171511.js",
     "static/js/787.b6f1fb86.chunk.js": "/Meme/static/js/787.b6f1fb86.chunk.js",
+    "static/media/loginLogo.svg": "/Meme/static/media/loginLogo.b632c5a4e0aa72535dd88012b7a37020.svg",
+    "static/media/logopic.png": "/Meme/static/media/logopic.0c048a59d7caa16e07ea.png",
     "static/media/comment2.svg": "/Meme/static/media/comment2.936605835950c852fc2e2d413b7cf128.svg",
     "static/media/comment5.svg": "/Meme/static/media/comment5.a1545dc83127174394b190530875f7d6.svg",
     "static/media/comment1.svg": "/Meme/static/media/comment1.c36ea4d17b8b0be87d9c6248d06617bb.svg",
@@ -13,11 +15,11 @@
     "static/media/pic2.png": "/Meme/static/media/pic2.d5c23e826669e1af7417.png",
     "index.html": "/Meme/index.html",
     "main.76839bfb.css.map": "/Meme/static/css/main.76839bfb.css.map",
-    "main.45cf4e67.js.map": "/Meme/static/js/main.45cf4e67.js.map",
+    "main.cd171511.js.map": "/Meme/static/js/main.cd171511.js.map",
     "787.b6f1fb86.chunk.js.map": "/Meme/static/js/787.b6f1fb86.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.76839bfb.css",
-    "static/js/main.45cf4e67.js"
+    "static/js/main.cd171511.js"
   ]
 }
