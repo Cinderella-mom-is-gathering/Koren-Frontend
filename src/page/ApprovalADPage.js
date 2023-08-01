@@ -31,6 +31,12 @@ const CardBox = styled.div`
   box-shadow: 0px 2px 3px 0.5px #d5d5d5;
   border-radius: 5px;
 `;
+
+const EmptyTextWrapper = styled.div`
+  display:flex;
+  justify-content: center;
+  align-items: center;
+`
 const realName = (account) => account.split(".")[0];
 
 const ApprovalADPage = () => {
@@ -40,15 +46,9 @@ const ApprovalADPage = () => {
     Api.getMyAdRequest().then(setRequestedAD);
   }, [])
 
-
-
   const deleteHandler = (requestPostId) => {
-  
     setRequestedAD(requestedAD.filter((e) => e.post_id !== requestPostId));
   };
-
-
- 
 
   // console.log("광고 :", Api.getPostByToken(requestedAD[0].token_id).then(e=>console.log(e.metadata?.description)))
 
@@ -56,7 +56,7 @@ const ApprovalADPage = () => {
       <>
       <Header
         title="문의"
-        renderBackArrowButton={true}
+        renderBackArrowButton={false}
         renderWritingPostButton={false}
       />
       <MainWrapper></MainWrapper>
@@ -71,7 +71,6 @@ const Helper = ({ e }) => {
   useEffect(() => { Api.getPostByToken(e.token_id).then(setNft) }, [])
   // Api.getPostByToken(e.token_id).then(setNft)
 
-  
   return (
   <>
   <MainWrapper>
@@ -90,6 +89,8 @@ const Helper = ({ e }) => {
           approveBtn="false"
           requesterId={e.requester_id}
         />
+        {nft.length === 0 && <EmptyTextWrapper>받은 요청이 없습니다..</EmptyTextWrapper>}
+
       </SubMainWrapper>
       <RejectButton />
       <ApproveButton />
