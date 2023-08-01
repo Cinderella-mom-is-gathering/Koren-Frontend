@@ -14,6 +14,7 @@ const StyledFooter = styled.div`
   left: 0;
   width: 100%;
   background-color: cornflowerblue;
+  z-index:99;
 `;
 
 const Button = styled.button`
@@ -32,7 +33,7 @@ const BottomNavigationBar = () => {
   const navigate = useNavigate();
   const HomeButtonHandler = () => {
     logger.debug("HomeButton Clicked!");
-    navigate("/posts");
+    navigate("/");
   };
   const BellButtonHandler = () => {
     logger.debug("BellButton Clicked!");
@@ -44,6 +45,8 @@ const BottomNavigationBar = () => {
   };
 
   return (
+    <>
+    <div style={{height:60}}></div>
     <StyledFooter>
       <Button onClick={HomeButtonHandler}>
         <AiOutlineHome />
@@ -55,6 +58,7 @@ const BottomNavigationBar = () => {
         <MdOutlinePersonOutline />
       </Button>
     </StyledFooter>
+    </>
   );
 };
 

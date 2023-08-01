@@ -6,6 +6,7 @@ import PostCard from "../component/postCard/PostCard";
 import RejectButton from "../component/postCard/RejectButton";
 import ApproveButton from "../component/postCard/ApproveButton";
 import BottomNavigationBar from "../component/BottomNavigationBar";
+import Header from "../component/header/Header";
 
 const MainWrapper = styled.div`
   margin: 10px;
@@ -31,19 +32,33 @@ const CardBox = styled.div`
 `;
 
 const ApprovalADPage = () => {
+  const text = "이거 사고 싶어요 팔아주세요"
+  const myText = "내가 더 잘생긴듯? ㅋㅋㅋ"
+  const cardList = [1, 2, 3]
   return (
     <>
-      <MainWrapper>
-        <CardBox>
-          <Profile nickname="Agust D" coinvaluebtn={false} />
-          <TextBox />
-          <SubMainWrapper>
-            <PostCard coinvaluebtn={true} approvebtn={false} />
-          </SubMainWrapper>
-          <RejectButton />
-          <ApproveButton />
-        </CardBox>
-      </MainWrapper>
+      <Header
+        title="문의"
+        renderBackArrowButton={true}
+        renderWritingPostButton={false}
+      />
+      <MainWrapper></MainWrapper>
+      {cardList.map((e) => 
+        <MainWrapper>
+          <CardBox>
+            <Profile nickname="구매자계정" coinValueBtn="false" />
+            <TextBox text={e+text} />
+            <SubMainWrapper>
+              <PostCard nickname="내계정" text={myText} coinvaluebtn={true} approveBtn="false" />
+            </SubMainWrapper>
+            <RejectButton />
+            <ApproveButton />
+          </CardBox>
+        </MainWrapper>
+      )
+      }
+
+
       <BottomNavigationBar />
     </>
   );
