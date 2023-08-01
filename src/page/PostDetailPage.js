@@ -5,6 +5,7 @@ import PostCard from "../component/postCard/PostCard";
 import React, {useEffect, useState} from "react";
 import * as Api from "../apis/ApiInterface";
 import {useParams} from "react-router-dom";
+import BottomNavigationBar from "../component/BottomNavigationBar";
 
 const MainWrapper = styled.div`
 margin:20px;
@@ -21,6 +22,8 @@ const realName = (account) =>  {
 const PostDetailPage=()=>{
 
     const [post,setPost] = useState({});
+    const [user,setUser] = useState({});
+
     const {postId} = useParams();
 
     useEffect(() => {
@@ -34,7 +37,7 @@ const PostDetailPage=()=>{
                 renderBackArrowButton={true}
             />
             <PostCard
-                nickname={realName(post?.token_id)}
+                nickname={realName(post?.owner_id)}
                 text={post?.metadata?.description}
                 url={post?.metadata?.img}
                 approveBtn={false}
@@ -42,6 +45,7 @@ const PostDetailPage=()=>{
                 chooseMenuBtn={true}
             />
             <CommentSection/>
+            <BottomNavigationBar />
         </div>
     )
 }
