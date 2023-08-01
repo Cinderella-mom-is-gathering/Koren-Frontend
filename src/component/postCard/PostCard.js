@@ -16,9 +16,11 @@ const CardBox = styled.div`
   border-radius: 5px;
   margin-top:5px;
   margin-bottom: 5px;
+  padding-right: 10px;
+  padding-left:10px;
 `
 
-const PostCard = ({profilePIC, nickname="Agust D", text="hi hi", url=PostPIC, approveBtn = true, coinValueBtn = true,chooseMenuBtn=false}) => {
+const PostCard = ({profilePIC, nickname="Agust D", text="hi hi", url, approveBtn = true, coinValueBtn = true,chooseMenuBtn=false}) => {
     return (
         <CardBox>
             <Profile profilePIC={profilePIC} nickname={nickname} coinValueBtn={coinValueBtn} chooseMenuBtn={chooseMenuBtn}/>
