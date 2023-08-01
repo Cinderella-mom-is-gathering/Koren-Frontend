@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import pic from "../assets/nonpic.png";
 import ImgBox from "../component/postCard/ImgBox";
 
-const Img = styled.img`
+export const Img = styled.img`
   border-radius: 100px;
   width: 40px;
   height: 40px;
@@ -18,7 +18,7 @@ const Img = styled.img`
   margin-left: 10px;
   margin-right: 10px;
 `;
-const NickName = styled.div`
+export const NickName = styled.div`
   display: inline-block;
   vertical-align: top;
   padding-top: 4px;
@@ -26,7 +26,7 @@ const NickName = styled.div`
   font-size: 15px;
   font-weight: bold;
 `;
-const ProfileHeader = styled.div`
+export const ProfileHeader = styled.div`
   width: 100%;
   padding: 20px 10px;
 `;
@@ -38,13 +38,13 @@ export const AddTextInputPageWrapper = styled.div`
   flex-direction: column;
 `;
 
-const ImageWrapper = styled.div`
+export const ImageWrapper = styled.div`
   padding: 0px 20px;
   border-radius: 5px;
   height: 300px;
 `;
 
-const SkeletonImage = styled.div`
+export const SkeletonImage = styled.div`
   width: 100%;
   height: 300px;
   background-color: #e0e0e0;
@@ -54,7 +54,7 @@ const SkeletonImage = styled.div`
   align-items: center;
 `;
 
-const TextBox = styled.div`
+export const TextBox = styled.div`
   font-size: 16px;
   font-weight: 700;
 `;
@@ -102,7 +102,6 @@ const AddPostPage = () => {
     console.log(transactionHashes);
 
     if (transactionHashes) {
-      // 다른 페이지로 이동하는 코드
       navigate("/posts/complete");
     }
   }, []);

@@ -37,7 +37,7 @@ export const TextInput = ({ contents, setContents, isOnFocus }) => {
           value={contents}
           rows={5}
           onChange={(event) => setContents(event.target.value)}
-          placeholder="포스트 내용을 입력해 주세요"
+          placeholder="포스트 내용을 입력해 주세요."
         />
       </TextAreaWrapper>
       {/*<Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">*/}
