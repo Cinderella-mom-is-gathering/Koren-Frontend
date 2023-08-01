@@ -126,19 +126,15 @@ const ProfilePage = () => {
           <ProBox3>{myInstro}</ProBox3>
         </ProBox2>
         <MainWrapper>
-          {myNFTs &&
-            myNFTs.map(
-              (e) =>
-                e && (
-                  <PostCard
-                    nickname={realName(e.owner_id)}
-                    text={e.metadata?.description}
-                    url={e.metadata?.img}
-                    approvebtn={false}
-                    coinvaluebtn={false}
-                  />
-                )
-            )}
+          {myNFTs.map((e) => (
+            <PostCard
+              nickname={realName(e.owner_id)}
+              text={e.metadata.description}
+              url={e.metadata.media}
+              approvebtn={false}
+              coinvaluebtn={false}
+            />
+          ))}
           {/* {repeatedSections.map((index) => (
           <PostCard nickname={myName} text={index} approvebtn={false} coinvaluebtn={false} />
         ))} */}

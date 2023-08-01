@@ -26,7 +26,9 @@ const Dropdown=styled.div`
 const DropdownContent=styled.div`
 
   position: absolute;
-  left: -200%;
+  left: -230%;
+  bottom: -90px;
+  
   background-color: #f9f9f9;
   min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -37,6 +39,7 @@ const A = styled.div`
   color: black;
   padding: 10px 10px;
   text-decoration: none;
+  text-underline: white;
   display: block;
   
  
