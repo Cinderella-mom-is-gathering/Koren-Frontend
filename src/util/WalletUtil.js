@@ -8,6 +8,7 @@ import logger from "./Logger";
 import { Environment } from "./Environment";
 import { Method } from "../apis/ApiInterface";
 const CONTRACT_ADDRESS = Environment.CONTRACT_ADDRESS;
+logger.debug("CONTRACT_ADDRESS",CONTRACT_ADDRESS);
 const wallet = new Wallet({ createAccessKeyFor: CONTRACT_ADDRESS });
 /**
  * Wallet 초기화

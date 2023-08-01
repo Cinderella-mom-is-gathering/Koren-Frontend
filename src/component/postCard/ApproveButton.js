@@ -4,6 +4,7 @@ import TextBox from "./TextBox";
 import ImgBox from "./ImgBox";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import * as Api from "../../apis/ApiInterface";
 
 const Button2 = styled.button`
   width: 95px;
@@ -45,7 +46,10 @@ const ApproveButton = () => {
   const [modalShow, setModalShow] = React.useState(false);
 
   return (<>
-    <Button2 variant="primary" onClick={() => setModalShow(true)}>
+    <Button2 variant="primary" onClick={() => {
+      Api.approveAdRequest(props.postId, props.requesterId)
+      setModalShow(true)
+    }}>
       승인
     </Button2>
 
