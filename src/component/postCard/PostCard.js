@@ -22,14 +22,9 @@ const PostCard = ({profilePIC, nickname="Agust D", text="hi hi", url=PostPIC, ap
     return (
         <CardBox>
             <Profile profilePIC={profilePIC} nickname={nickname} coinValueBtn={coinValueBtn} chooseMenuBtn={chooseMenuBtn}/>
-
-
             <TextBox text={text} />
-
             <ImgBox url={url} />
-
             <>{approveBtn === true ?
-
                 <><RejectButton/>
                 <ApproveButton/> </>:<div></div>}
             </>
