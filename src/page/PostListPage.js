@@ -45,7 +45,9 @@ const PostListPage = () => {
       <MainWrapper>
         {posts.map((e) => (
           <PostCard
-              onClick={goDetailPageHandler}
+            key={e.token_id}
+            postId={e.token_id}
+              onClickHandler={() => goDetailPageHandler(e.token_id)}
               profilePIC={pic}
             nickname={realName(e.owner_id)}
             text={e.metadata?.description}

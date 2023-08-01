@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Carousel from "react-bootstrap/Carousel";
 const Crop = styled.img`
   margin-top: 15px;
-  width: 340px;
+  width: 100%;
   height: 300px;
   object-fit: cover;
   object-position: initial;

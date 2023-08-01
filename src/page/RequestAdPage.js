@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AddTextInputPageWrapper } from "./AddPostPage";
 import Header from "../component/header/Header";
 import { TextInput } from "../component/TextInput";
@@ -6,6 +6,8 @@ import { TextInputBottomBar } from "../component/TextInputBottomBar";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../util/FirebaseInit";
 import { styled } from "styled-components";
+import { useNavigate, useParams } from "react-router-dom";
+import { createAdRequest } from "../apis/ApiInterface";
 
 const CostInput = styled.input`
   width: 100%;
@@ -16,30 +18,64 @@ const CostInput = styled.input`
 `;
 
 const RequestAdPage = () => {
+  const params = useParams();
+  const navigate = useNavigate();
+
   const [height, setHeight] = useState(0);
   const [cost, setCost] = useState("");
   const [contents, setContents] = useState("");
-  const [imageFile, setImageFile] = useState([]);
+  const [imageFiles, setImageFiles] = useState([]);
+  const [imageUrls, setImageUrls] = useState([]);
 
-  const onSubmit = () => {
-    console.log("firebase에 업로드");
-
-    for (let i = 0; i < imageFile.length; i++) {
-      const storageRef = ref(storage, imageFile[i].name);
-      uploadBytes(storageRef, imageFile[i]).then((snapshot) => {
+  const uploadPhotos = async () => {
+    let urls = [];
+    for (let i = 0; i < imageFiles.length; i++) {
+      const storageRef = ref(storage, imageFiles[i].name);
+      await uploadBytes(storageRef, imageFiles[i]).then((snapshot) => {
         console.log(snapshot);
-        //   console.log("Uploaded a blob or file!");
-
-        getDownloadURL(storageRef).then((url) => {
-          console.log(url);
-        });
       });
+      console.log("업로드 완료");
+      const url = await getDownloadURL(storageRef);
+      console.log("uri get!");
+      // setImageUrls((prev) => prev.concat([url]));
+      urls.push(url);
     }
+    console.log("사진 업로드 완료", imageUrls, urls);
+
+    return urls;
   };
 
-  // const onChange = (e) => {
-  //   setCost(e.target.value);
-  // };
+  const uploadAdvertise = (urls) => {
+    console.log("사진 업로드 완료", imageUrls);
+    // createPost(contents, urls).then((result) => {
+    //   console.log("업로드 완료");
+    // });
+    createAdRequest(params.postId, contents, urls, cost).then((result) => {
+      console.log("업로드 완료");
+    });
+  };
+
+  const onSubmit = async () => {
+    console.log("firebase에 업로드");
+
+    const urls = await uploadPhotos();
+    uploadAdvertise(urls);
+  };
+
+  // console.log(params.postId);
+
+  useEffect(() => {
+    const currentURL = new URL(window.location.href);
+    const urlParams = new URLSearchParams(currentURL.search);
+    const transactionHashes = urlParams.get("transactionHashes");
+
+    // console.log(transactionHashes);
+
+    if (transactionHashes) {
+      // 다른 페이지로 이동하는 코드
+      navigate("/advertisements/complete");
+    }
+  }, []);
 
   return (
     <AddTextInputPageWrapper>
@@ -56,7 +92,7 @@ const RequestAdPage = () => {
       />
       <TextInputBottomBar
         height={height}
-        setImageFile={setImageFile}
+        setImageFile={setImageFiles}
         onSubmit={onSubmit}
       />
     </AddTextInputPageWrapper>
