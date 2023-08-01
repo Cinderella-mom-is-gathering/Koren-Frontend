@@ -54,13 +54,30 @@ const Text = styled.div`
   align-items: center;
 `;
 
-export const TextInputBottomBar = ({ height, setImageFile, onSubmit }) => {
+export const TextInputBottomBar = ({
+  height,
+  setImageFile,
+  onSubmit,
+  setPreviewURLs,
+}) => {
   const onChangeImage = (event) => {
-    for (let i = 0; i < event.target.files.length; i++) {
-      console.log(event.target.files[i]);
-    }
+    const reader = new FileReader();
+    // for (let i = 0; i < event.target.files.length; i++) {
+    //   console.log(event.target.files[i]);
+    // }
     // console.log(event.target.files);
     setImageFile(event.target.files);
+
+    for (let i = 0; i < event.target.files.length; i++) {
+      const reader = new FileReader();
+      reader.onloadend = (finishedEvent) => {
+        const {
+          currentTarget: { result },
+        } = finishedEvent;
+        setPreviewURLs((prev) => [...prev, result]);
+      };
+      reader.readAsDataURL(event.target.files[i]);
+    }
   };
 
   return (

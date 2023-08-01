@@ -5,9 +5,31 @@ import Header from "../component/header/Header";
 import { useEffect, useState } from "react";
 import { storage } from "../util/FirebaseInit";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-// import * as api from "../api/api";
-import { createPost } from "../apis/ApiInterface";
+import { createPost, getMyAccountId } from "../apis/ApiInterface";
 import { useNavigate } from "react-router-dom";
+import pic from "../assets/nonpic.png";
+import ImgBox from "../component/postCard/ImgBox";
+
+export const Img = styled.img`
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+`;
+export const NickName = styled.div`
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 4px;
+  margin: 5px;
+  font-size: 15px;
+  font-weight: bold;
+`;
+export const ProfileHeader = styled.div`
+  width: 100%;
+  padding: 20px 10px;
+`;
 
 export const AddTextInputPageWrapper = styled.div`
   width: 100%;
@@ -16,15 +38,34 @@ export const AddTextInputPageWrapper = styled.div`
   flex-direction: column;
 `;
 
+export const ImageWrapper = styled.div`
+  padding: 0px 20px;
+  border-radius: 5px;
+  height: 300px;
+`;
+
+export const SkeletonImage = styled.div`
+  width: 100%;
+  height: 300px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TextBox = styled.div`
+  font-size: 16px;
+  font-weight: 700;
+`;
+
 const AddPostPage = () => {
   const navigate = useNavigate();
 
-  // const urlParams = new URLSearchParams(window.location.search);
-  // const transactionHashes = urlParams.get("transactionHashes");
-
   const [height, setHeight] = useState(0);
+  const [userName, setUserName] = useState("");
   const [imageFiles, setImageFiles] = useState([]);
-  const [imageUrls, setImageUrls] = useState([]); // [url1, url2, url3
+  const [previewURLs, setPreviewURLs] = useState([]);
   const [contents, setContents] = useState("");
 
   const uploadPhotos = async () => {
@@ -34,38 +75,26 @@ const AddPostPage = () => {
       await uploadBytes(storageRef, imageFiles[i]).then((snapshot) => {
         console.log(snapshot);
       });
-      console.log("업로드 완료");
       const url = await getDownloadURL(storageRef);
-      console.log("uri get!");
-      // setImageUrls((prev) => prev.concat([url]));
       urls.push(url);
     }
-    console.log("사진 업로드 완료", imageUrls, urls);
-
     return urls;
   };
 
   const uploadPost = (urls) => {
-    console.log("사진 업로드 완료", imageUrls);
     createPost(contents, urls).then((result) => {
       console.log("업로드 완료");
     });
   };
 
   const onSubmit = async () => {
-    console.log("firebase에 업로드");
-
     const urls = await uploadPhotos();
     uploadPost(urls);
   };
 
-  // console.log(urlParams, transactionHashes);
-
   useEffect(() => {
-    // if (window) {
-    //   let prevVisualViewport = window.visualViewport?.height;
-    //   console.log(prevVisualViewport);
-    // }
+    const userId = getMyAccountId();
+    setUserName(userId);
     const currentURL = new URL(window.location.href);
     const urlParams = new URLSearchParams(currentURL.search);
     const transactionHashes = urlParams.get("transactionHashes");
@@ -73,29 +102,38 @@ const AddPostPage = () => {
     console.log(transactionHashes);
 
     if (transactionHashes) {
-      // 다른 페이지로 이동하는 코드
       navigate("/posts/complete");
     }
   }, []);
 
-  // useEffect(() => {
-  //   if (transactionHashes) {
-  //     // 다른 페이지로 이동하는 코드
-  //     navigate("/approval");
-  //   }
-  // }, [transactionHashes, navigate]);
-
   return (
     <AddTextInputPageWrapper>
       <Header renderBackArrowButton={true} title="포스트 작성" />
+
+      <ProfileHeader>
+        <Img src={pic} />
+
+        <NickName>{userName?.split(".")[0]}</NickName>
+      </ProfileHeader>
       <TextInput
         contents={contents}
         setContents={setContents}
         isOnFocus={true}
       />
+      <ImageWrapper>
+        {previewURLs.length === 0 ? (
+          <SkeletonImage>
+            <TextBox>사진을 추가해 주세요</TextBox>
+          </SkeletonImage>
+        ) : (
+          <ImgBox url={previewURLs} />
+        )}
+      </ImageWrapper>
+
       <TextInputBottomBar
         height={height}
         setImageFile={setImageFiles}
+        setPreviewURLs={setPreviewURLs}
         onSubmit={onSubmit}
       />
     </AddTextInputPageWrapper>
