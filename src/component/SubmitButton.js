@@ -15,10 +15,13 @@ const Button = styled.button`
   font-weight: bold;
   letter-spacing: 5px;
 `;
-const SubmitButton = ({ content }) => {
+const SubmitButton = ({ content, onClick }) => {
   return (
     <form>
-      <Button type="button"> {content} </Button>
+      <Button type="button" onClick={onClick}>
+        {" "}
+        {content}{" "}
+      </Button>
     </form>
   );
 };
