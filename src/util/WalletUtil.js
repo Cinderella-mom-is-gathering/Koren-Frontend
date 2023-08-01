@@ -6,6 +6,7 @@
 import {Wallet} from "../near-wallet";
 import logger from "./Logger";
 import {Environment} from "./Environment";
+import {Method} from "../apis/ApiInterface";
 const CONTRACT_ADDRESS = Environment.CONTRACT_ADDRESS;
 const wallet = new Wallet({createAccessKeyFor: CONTRACT_ADDRESS});
 /**
@@ -42,12 +43,10 @@ export const signOut = () => {
  * @param deposit
  * @returns {Promise<*>}
  */
-export const executeContractMethod = async (method,args,deposit) => {
-    if (typeof deposit !== 'undefined') {
-        // gas와 deposit 인자가 제공되었을 경우, callMethod를 호출
+export const executeContractMethod = async (method,methodName,args,deposit) => {
+    if (method === Method.CALL) {
         return await callMethod(method, args, deposit);
     } else {
-        // gas와 deposit 인자가 제공되지 않았을 경우, viewMethod를 호출
         return await viewMethod(method, args);
     }
 }
@@ -58,8 +57,8 @@ export const viewMethod = async (method,args) => {
     return response;
 }
 
-export const callMethod = async (method,args,gas,deposit) => {
-    logger.debug("[컨트랙트 호출] Method: ",method,"args:",args,"gas:",gas,"deposit:",deposit);
+export const callMethod = async (method,args,deposit) => {
+    logger.debug("[컨트랙트 호출] Method: ",method,"args:",args,"deposit:",deposit);
     let response = await wallet.callMethod({CONTRACT_ADDRESS, method, args, gas, deposit});
     logger.debug("[컨트랙트 호출 결과] (",method,args,") Response :",response);
     return response;
