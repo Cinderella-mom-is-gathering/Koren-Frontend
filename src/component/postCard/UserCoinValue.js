@@ -10,13 +10,13 @@ const Button = styled.button`
   width: 100px;
   height: 40px;
   margin: 10px;
-  margin-left: 20%;
   border-radius: 50px;
   color: black;
   font-size: 15px;
   border-color: black;
   letter-spacing: 2px;
   display: inline-flex;
+  
   justify-content: center;
   align-items:center;
   background-color: white;
