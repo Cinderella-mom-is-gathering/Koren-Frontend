@@ -32,7 +32,6 @@ const Profile = ({
   nickname,
   coinValueBtn = true,
   chooseMenuBtn = false,
-  postId,
 }) => {
   return (
     <Wrapper>
@@ -45,7 +44,7 @@ const Profile = ({
       {coinValueBtn === true ? (
         <UserCoinValue value={0.001} />
       ) : chooseMenuBtn === true ? (
-        <ChooseMenu postId={postId} />
+        <ChooseMenu />
       ) : (
         <></>
       )}
