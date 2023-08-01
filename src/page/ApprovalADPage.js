@@ -8,9 +8,13 @@ import ApproveButton from "../component/postCard/ApproveButton";
 import BottomNavigationBar from "../component/BottomNavigationBar";
 import Header from "../component/header/Header";
 import * as Api from "../apis/ApiInterface";
+<<<<<<< HEAD
 import ImgBox from "../component/postCard/ImgBox";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+=======
+import logger from "../util/Logger";
+>>>>>>> main
 
 const MainWrapper = styled.div`
   margin: 10px;
@@ -35,6 +39,7 @@ const CardBox = styled.div`
   border-radius: 5px;
 `;
 
+<<<<<<< HEAD
 const Button2 = styled.button`
   width: 95px;
   height: 40px;
@@ -48,6 +53,13 @@ const Button2 = styled.button`
 `;
 
 
+=======
+const EmptyTextWrapper = styled.div`
+  display:flex;
+  justify-content: center;
+  align-items: center;
+`
+>>>>>>> main
 const realName = (account) => account.split(".")[0];
 
 const ApprovalADPage = () => {
@@ -57,15 +69,10 @@ const ApprovalADPage = () => {
     Api.getMyAdRequest().then(setRequestedAD);
   }, [])
 
-
-
   const deleteHandler = (requestPostId) => {
-  
     setRequestedAD(requestedAD.filter((e) => e.post_id !== requestPostId));
   };
 
-
- 
 
   // console.log("광고 :", Api.getPostByToken(requestedAD[0].token_id).then(e=>console.log(e.metadata?.description)))
 
@@ -73,7 +80,7 @@ const ApprovalADPage = () => {
       <>
       <Header
         title="문의"
-        renderBackArrowButton={true}
+        renderBackArrowButton={false}
         renderWritingPostButton={false}
       />
       <MainWrapper></MainWrapper>
@@ -87,6 +94,7 @@ const Helper = ({ e }) => {
   const [nft, setNft] = useState({ metadata: { description: "", img: [] } });
   useEffect(() => { Api.getPostByToken(e.token_id).then(setNft) }, [])
   // Api.getPostByToken(e.token_id).then(setNft)
+<<<<<<< HEAD
   // const [call, setCall] = useState(()=>{Api.approveAd(e.token_id, e.requester_id)});
   // useEffect(() => { setCall(()=>{Api.approveAd(e.token_id, e.requester_id)}) }, [e]);
   const call = ()=>Api.approveAd(e.token_id, e.requester_id)
@@ -140,6 +148,10 @@ const Helper = ({ e }) => {
     </>
     )
   }
+=======
+
+  logger.debug("NFT",nft);
+>>>>>>> main
 
   return (
   <>
@@ -160,6 +172,8 @@ const Helper = ({ e }) => {
           approveBtn="false"
           requesterId={e.requester_id}
         />
+        {nft.length === 0 && <EmptyTextWrapper>받은 요청이 없습니다..</EmptyTextWrapper>}
+
       </SubMainWrapper>
       <RejectButton />
       <ApproveButton/>
