@@ -28,10 +28,12 @@ const PostCard = ({
   approveBtn = true,
   coinValueBtn = true,
   chooseMenuBtn = false,
+  coinValue=0.001,
 }) => {
   return (
     <CardBox>
       <Profile
+        coinValue={coinValue}
         profilePIC={profilePIC}
         nickname={nickname}
         coinValueBtn={coinValueBtn}

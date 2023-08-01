@@ -32,6 +32,8 @@ const CardBox = styled.div`
   border-radius: 5px;
 `;
 
+const realName = (account) => account.split(".")[0];
+
 const ApprovalADPage = () => {
   const text = "이거 사고 싶어요 팔아주세요"
   const myText = "내가 더 잘생긴듯? ㅋㅋㅋ"
@@ -55,10 +57,10 @@ const ApprovalADPage = () => {
       {requestedAD.map((e) => 
         <MainWrapper>
           <CardBox>
-            <Profile nickname="구매자계정" coinValueBtn="false" />
-            <TextBox text={e+text} />
+            <Profile nickname={realName(e.request_id)} coinValueBtn="false" />
+            <TextBox text={e.description} />
             <SubMainWrapper>
-              <PostCard nickname="내계정" text={myText} coinvaluebtn={true} approveBtn="false" />
+              <PostCard coinValue={e.cost/1e24} nickname={realName(Api.getMyAccountId())} text={myText} coinvaluebtn={true} approveBtn="false" />
             </SubMainWrapper>
             <RejectButton />
             <ApproveButton />
