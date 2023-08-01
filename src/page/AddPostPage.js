@@ -5,6 +5,8 @@ import Header from "../component/header/Header";
 import { useEffect, useState } from "react";
 import { storage } from "../util/FirebaseInit";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+// import * as api from "../api/api";
+import { createPost } from "../apis/ApiInterface";
 
 export const AddTextInputPageWrapper = styled.div`
   width: 100%;
@@ -15,20 +17,24 @@ export const AddTextInputPageWrapper = styled.div`
 
 const AddPostPage = () => {
   const [height, setHeight] = useState(0);
-  const [imageFile, setImageFile] = useState([]);
+  const [imageFiles, setImageFiles] = useState([]);
   const [contents, setContents] = useState("");
 
   const onSubmit = () => {
     console.log("firebase에 업로드");
 
-    for (let i = 0; i < imageFile.length; i++) {
-      const storageRef = ref(storage, imageFile[i].name);
-      uploadBytes(storageRef, imageFile[i]).then((snapshot) => {
+    for (let i = 0; i < imageFiles.length; i++) {
+      const storageRef = ref(storage, imageFiles[i].name);
+      uploadBytes(storageRef, imageFiles[i]).then((snapshot) => {
         console.log(snapshot);
         //   console.log("Uploaded a blob or file!");
 
         getDownloadURL(storageRef).then((url) => {
           console.log(url);
+
+          createPost(contents, imageFiles).then((result) => {
+            console.log(result);
+          });
         });
       });
     }
@@ -46,7 +52,7 @@ const AddPostPage = () => {
       <TextInput contents={contents} setContents={setContents} />
       <TextInputBottomBar
         height={height}
-        setImageFile={setImageFile}
+        setImageFile={setImageFiles}
         onSubmit={onSubmit}
       />
     </AddTextInputPageWrapper>

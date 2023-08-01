@@ -17,18 +17,24 @@ import LoginPage from "./page/LoginPage";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     WalletUtil.init().then((res) => {
-      setIsLoading(false);
+      if (res) {
+        // return <LoginPage />;
+        setIsSignedIn(true);
+      }
 
-      if (!res) return <LoginPage />;
+      // setIsLoading(false);
     });
   }, []);
 
-  if (isLoading) return <>Loading...</>;
+  // if (isLoading) return <>Loading...</>;
 
+  if (!isSignedIn) {
+    return <LoginPage />;
+  }
   return (
     <HashRouter>
       <Routes>
