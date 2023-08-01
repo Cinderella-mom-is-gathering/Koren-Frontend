@@ -42,10 +42,10 @@ export const signOut = () => {
  * @param deposit
  * @returns {Promise<*>}
  */
-export const executeContractMethod = async (method,args,gas,deposit) => {
-    if (typeof gas !== 'undefined' && typeof deposit !== 'undefined') {
+export const executeContractMethod = async (method,args,deposit) => {
+    if (typeof deposit !== 'undefined') {
         // gas와 deposit 인자가 제공되었을 경우, callMethod를 호출
-        return await callMethod(method, args, gas, deposit);
+        return await callMethod(method, args, deposit);
     } else {
         // gas와 deposit 인자가 제공되지 않았을 경우, viewMethod를 호출
         return await viewMethod(method, args);

@@ -9,9 +9,8 @@ import SubmitButton from '../component/SubmitButton';
 import Header from "../component/header/Header";
 import PostPIC from "../assets/postPIC.png" //이미지 불러오기
 import profilePIC from "../assets/profilePIC.png"
-// import * as WalletUtil from "../util/WalletUtil";
 import {Environment} from "../util/Environment";
-const CONTRACT_ADDRESS = Environment.CONTRACT_ADDRESS;
+import * as Api from "../apis/ApiInterface";
 
 const MainWrapper = styled.div`
   margin: 15px;
@@ -97,16 +96,20 @@ const realName=(account) =>(
 
 const callPostCard=(e)=>(console.log(e));
 
-const ProfilePage = ({wallet}) => {
+const ProfilePage = () => {
   const repeatedSections = [1, 2, 3];
   const myName='rla'
   // const myName=realName(wallet.accountId);
   let [myNFTs, setMyNFTs] = useState([]);
-  
+  /**
   useEffect(()=>{
   wallet.viewMethod({contractId:CONTRACT_ADDRESS, method:"nft_tokens_for_owner",args:{account_id:"kkhmsg05.testnet"}})
   .then(setMyNFTs);}
   ,[]);
+   */
+  useEffect(() => {
+      Api.getMyPosts().then(setMyNFTs);
+  })
 
   return (
     <div>
