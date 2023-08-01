@@ -7,8 +7,8 @@ import TextBox from "../component/postCard/TextBox";
 import ImgBox from "../component/postCard/ImgBox";
 import SubmitButton from "../component/SubmitButton";
 import Header from "../component/header/Header";
-import PostPIC from "../assets/postPIC.png"; //이미지 불러오기
-import profilePIC from "../assets/profilePIC.png";
+import PostPIC from "../assets/background.png"; //이미지 불러오기
+import profilePIC from "../assets/logopic.png";
 import { Environment } from "../util/Environment";
 import * as Api from "../apis/ApiInterface";
 

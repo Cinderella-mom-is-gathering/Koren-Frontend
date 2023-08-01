@@ -43,7 +43,7 @@ const PostListPage = () => {
 
       <MainWrapper>
         {posts
-          .slice()
+          ?.slice()
           .reverse()
           .map((e) => (
             <PostCard
@@ -57,7 +57,7 @@ const PostListPage = () => {
               approveBtn={false}
               coinValueBtn={false}
               chooseMenuBtn={true}
-              hearts={1}
+              hearts={10}
             />
           ))}
       </MainWrapper>
