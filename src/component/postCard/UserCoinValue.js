@@ -32,7 +32,7 @@ const Img = styled.img`
 
 const UserCoinValue = ({value}) => {
 
-    const coin =(10*(Math.random()).toFixed(3));
+    const coin =((10*Math.random()).toFixed(1));
     return (
         <Button>
             <Img src={CoinLabel}/>
