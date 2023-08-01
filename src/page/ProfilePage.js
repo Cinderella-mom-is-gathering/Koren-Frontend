@@ -129,8 +129,8 @@ const ProfilePage = () => {
           {myNFTs.map((e) => (
             <PostCard
               nickname={realName(e.owner_id)}
-              text={e.metadata.description}
-              url={e.metadata.media}
+              text={e.metadata?.description}
+              url={e.metadata?.img}
               approvebtn={false}
               coinvaluebtn={false}
             />
