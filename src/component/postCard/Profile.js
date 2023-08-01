@@ -11,7 +11,7 @@ const Img = styled.img`
   width: 40px;
   height: 40px;
   display: inline-block;
-  margin-left: 20px;
+  margin-left: 10px;
   margin-right: 10px;
 
 `
@@ -23,20 +23,26 @@ const NickName = styled.div`
   font-size: 15px;
   font-weight: bold;
 `
-
+const Wrapper = styled.div`
+    display: flex;
+  justify-content:space-between;
+`
 
 const Profile = ({profilePIC, nickname, coinValueBtn = true, chooseMenuBtn=false}) => {
     return (
-        <div>
-            <Img src={profilePIC}></Img>
+        <Wrapper>
+            <div>
 
-            <NickName>
-                {nickname}
-            </NickName>
-            <>
-                {coinValueBtn === true ? <UserCoinValue value={0.001}/> : <> {chooseMenuBtn === true? <ChooseMenu />:<></>}</>}
-            </>
-        </div>
+                <Img src={profilePIC}></Img>
+
+                <NickName>
+                    {nickname}
+                </NickName>
+            </div>
+
+                {coinValueBtn === true ? <UserCoinValue value={0.001}/> : (chooseMenuBtn === true? <ChooseMenu />:<></>)}
+
+        </Wrapper>
 
     )
 }
