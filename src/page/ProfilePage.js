@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BottomNavigationBar from '../component/BottomNavigationBar';
 import styled from 'styled-components';
 import PostCard from '../component/postCard/PostCard';
-import Profile from '../component/postCard/Profile';
-import TextBox from '../component/postCard/TextBox';
-import ImgBox from '../component/postCard/ImgBox';
-import SubmitButton from '../component/SubmitButton';
+
 import Header from "../component/header/Header";
 import PostPIC from "../assets/postPIC.png" //이미지 불러오기
 import profilePIC from "../assets/profilePIC.png"
@@ -129,7 +126,7 @@ const ProfilePage = () => {
         <ProBox3>{myInstro}</ProBox3>
       </ProBox2>
       <MainWrapper>
-        {myNFTs.map((e)=><PostCard nickname={realName(e.owner_id)} text={e.metadata.description} url={e.metadata.media} approvebtn={false} coinvaluebtn={false} />)}
+        {myNFTs.map((e)=><PostCard nickname={realName(e.owner_id)} text={e.metadata.description} url={e.metadata.media} approveBtn={false} coinValueBtn={false} chooseMenuBtn={false}  />)}
         {/* {repeatedSections.map((index) => (
           <PostCard nickname={myName} text={index} approvebtn={false} coinvaluebtn={false} />
         ))} */}

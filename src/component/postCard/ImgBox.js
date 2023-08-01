@@ -11,19 +11,20 @@ const Crop = styled.img`
   margin-right: 20px;
 `;
 
+
 const ImgBox = ({ url }) => {
-  return (
-    <div>
-      {url && (
-        <Carousel>
-          {url.map((pic) => (
-            <Carousel.Item interval={1000000000}>
-              <Crop src={pic}></Crop>
-            </Carousel.Item>
-          ))}
-        </Carousel>
-      )}
-    </div>
-  );
+    return (
+        <div>
+            {url && (
+                <Carousel>
+                    {url.map((pic) => (
+                        <Carousel.Item interval={10000000000}>
+                            <Crop src={pic}></Crop>
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
+            )}
+        </div>
+    );
 };
 export default ImgBox;
