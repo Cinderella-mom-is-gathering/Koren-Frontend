@@ -43,7 +43,7 @@ const PostListPage = () => {
       />
 
       <MainWrapper>
-        {posts.map((e) => (
+        {posts.slice().reverse().map((e) => (
           <PostCard
             key={e.token_id}
             postId={e.token_id}
