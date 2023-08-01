@@ -34,7 +34,7 @@ const PostCard = ({
   return (
     <CardBox>
       <Profile
-        coinValue={coinValue}
+        // coinValue={coinValue}
         profilePIC={profilePIC}
         nickname={nickname}
         coinValueBtn={coinValueBtn}

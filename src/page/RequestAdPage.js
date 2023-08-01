@@ -62,7 +62,7 @@ const RequestAdPage = () => {
     uploadAdvertise(urls);
   };
 
-  // console.log(params.postId);
+  console.log(params.postId);
 
   useEffect(() => {
     const currentURL = new URL(window.location.href);
