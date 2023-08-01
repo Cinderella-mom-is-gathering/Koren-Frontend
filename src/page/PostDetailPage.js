@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import CommentSection from "../component/comment/CommentSection";
 
 const MainWrapper = styled.div`
 margin:20px;
@@ -11,6 +12,7 @@ const PostDetailPage=()=>{
     return(
         <div>
             PostDetailPage
+            <CommentSection/>
         </div>
     )
 }

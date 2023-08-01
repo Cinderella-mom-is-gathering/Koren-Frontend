@@ -11,15 +11,17 @@ import {Link} from "react-router-dom";
 const DropBtn=styled.button`
   background-color: white;
   color: white;
-  margin-left: 10px;
   font-size: 16px;
   border: none;
   cursor: pointer;
 `
 const Dropdown=styled.div`
   position: relative;
-  display: inline-block;
-  margin-left:50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-around;
+ 
+  
 `
 const DropdownContent=styled.div`
 
@@ -33,7 +35,7 @@ const DropdownContent=styled.div`
 const A = styled.div`
 
   color: black;
-  padding: 12px 16px;
+  padding: 10px 10px;
   text-decoration: none;
   display: block;
   

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Box=styled.div`
   margin-left: 20px;
-  margin-top:15px;
+  margin-top:5px;
   margin-right:20px;
 `
 
