@@ -15,6 +15,7 @@ import { Environment } from "./util/Environment";
 import { useEffect, useState } from "react";
 import LoginPage from "./page/LoginPage";
 import ApprovalADPage from "./page/ApprovalADPage";
+import CompleteAddPostPage from "./page/CompleteAddPostPage";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -47,6 +48,7 @@ function App() {
         <Route path="/advertisements/add" element={<RequestAdPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/approval" element={<ApprovalADPage />} />
+        <Route path="/posts/complete" element={<CompleteAddPostPage />} />
       </Routes>
     </HashRouter>
   );

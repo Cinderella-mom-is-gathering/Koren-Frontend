@@ -1,17 +1,16 @@
 import React from "react";
 
 import styled from "styled-components";
-import Carousel from 'react-bootstrap/Carousel';
+import Carousel from "react-bootstrap/Carousel";
 const Crop = styled.img`
-
   margin-top: 15px;
   width: 340px;
   height: 300px;
   object-fit: cover;
   object-position: initial;
   margin-right: 20px;
+`;
 
-`
 
 const ImgBox = ({ url }) => {
     return (
