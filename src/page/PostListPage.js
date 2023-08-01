@@ -28,7 +28,7 @@ const pics = [pic1, pic2, pic3];
 const PostListPage = () => {
     let [posts,setPosts]=useState([]);
     useEffect(() => {
-        Api.getfeed().then(setPosts);
+        Api.getFeed().then(setPosts);
     },[])
     return (
         <>
@@ -42,7 +42,6 @@ const PostListPage = () => {
                 {posts.map((e)=>(
                 <PostCard nickname={realName(e.owner_id)}
                           text={e.metadata.description}
-
                           url={e.img}
                     approveBtn={false}
                     coinValueBtn={false}

@@ -18,7 +18,7 @@ const ImgBox = ({ url }) => {
             {url && (
                 <Carousel>
                     {url.map((pic) => (
-                        <Carousel.Item interval={1000000000}>
+                        <Carousel.Item interval={10000000000}>
                             <Crop src={pic}></Crop>
                         </Carousel.Item>
                     ))}
