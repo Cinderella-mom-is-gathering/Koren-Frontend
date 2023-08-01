@@ -70,7 +70,7 @@ const ProBox = styled.div`
 `
 
 const ProBox2 = styled.div`
-  margin-top: 15px;
+  margin-top: 60px;
   margin-left: 40px;
   margin-right: 40px;
   height: 50px;
@@ -99,6 +99,7 @@ const callPostCard=(e)=>(console.log(e));
 const ProfilePage = () => {
   const repeatedSections = [1, 2, 3];
   const myName='rla'
+  const myInstro='안녕 나는 어거스트D슈가'
   // const myName=realName(wallet.accountId);
   let [myNFTs, setMyNFTs] = useState([]);
   /**
@@ -109,7 +110,7 @@ const ProfilePage = () => {
    */
   useEffect(() => {
       Api.getMyPosts().then(setMyNFTs);
-  })
+  },[])
 
   return (
     <div>
@@ -118,19 +119,21 @@ const ProfilePage = () => {
         renderBackArrowButton={true}
         renderWritingPostButton={false}
       />
+      <MainWrapper>
       <ProBox>
         <BackImg src={PostPIC} />
         <ProImg src={profilePIC} />
       </ProBox>
       <ProBox2>
         <b>{myName}</b>
-        <ProBox3>안녕 나는 어거스트D슈가</ProBox3>
+        <ProBox3>{myInstro}</ProBox3>
       </ProBox2>
       <MainWrapper>
         {myNFTs.map((e)=><PostCard nickname={realName(e.owner_id)} text={e.metadata.description} url={e.metadata.media} approvebtn={false} coinvaluebtn={false} />)}
         {/* {repeatedSections.map((index) => (
           <PostCard nickname={myName} text={index} approvebtn={false} coinvaluebtn={false} />
         ))} */}
+      </MainWrapper>
       </MainWrapper>
 
       <BottomNavigationBar />

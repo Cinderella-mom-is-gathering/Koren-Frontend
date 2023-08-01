@@ -11,7 +11,7 @@ import {Link} from "react-router-dom";
 const DropBtn=styled.button`
   background-color: white;
   color: white;
-
+  margin-left: 10px;
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -24,16 +24,19 @@ const Dropdown=styled.div`
 const DropdownContent=styled.div`
 
   position: absolute;
+  left: -200%;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 `
 const A = styled.div`
+
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  
  
 `
 
@@ -50,8 +53,8 @@ const ChooseMenu = () => {
             <DropBtn onClick={Click}><CiMenuKebab style={{"color":"grey"}}/></DropBtn>
             {isClicked?
             <DropdownContent>
-                <A ><Link to={"/advertisements/add"}>일반 문의</Link> </A>
-                <A ><Link to={"/posts/:postId/nft"}>NFT 문의</Link></A>
+                <Link to={"/advertisements/add"}><A>일반 문의</A></Link>
+                <Link to={"/posts/:postId/nft"}><A>NFT 문의</A></Link>
 
             </DropdownContent>:<></>}
         </Dropdown>)

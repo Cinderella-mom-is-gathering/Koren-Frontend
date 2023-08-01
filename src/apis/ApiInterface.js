@@ -89,7 +89,7 @@ export const getMyPosts = async (index, limit) => {
     index: index,
     limit: limit,
   };
-  return await send("nft_tokens_for_owner", args);
+  return await send(Method.VIEW,"nft_tokens_for_owner", args);
 };
 
 export const createPost = async (description, img) => {

@@ -16,11 +16,15 @@ const Title = styled.div`
   font-weight: 700;
   font-size: 20px;
 `;
+
 const HeaderWrapper = styled.header`
   display: flex;
+  position: fixed;
   width: 100%;
   height: 60px;
   border-bottom: 1px solid lightgray;
+  z-index:99;
+  background-color:white;
 `;
 const Header = (props) => {
   const renderBackArrowButton = props.renderBackArrowButton;
@@ -34,6 +38,7 @@ const Header = (props) => {
   const rightTab = renderWritingPostButton ? <WritingPostButton /> : emptyTab;
 
   return (
+      <>
     <HeaderWrapper>
       {leftTab}
       <TitleTab>
@@ -41,6 +46,8 @@ const Header = (props) => {
       </TitleTab>
       {rightTab}
     </HeaderWrapper>
+        <div style={{height:60}}></div>
+      </>
   );
 };
 

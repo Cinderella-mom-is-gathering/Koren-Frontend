@@ -52,7 +52,7 @@ export const executeContractMethod = async (
   if (method === Method.CALL) {
     return await callMethod(methodName, args, deposit);
   } else {
-    return await viewMethod(method, args);
+    return await viewMethod(methodName, args);
   }
 };
 export const viewMethod = async (method, args) => {
