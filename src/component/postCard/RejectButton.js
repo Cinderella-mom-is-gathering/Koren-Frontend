@@ -1,9 +1,7 @@
 import React from "react";
 
 import styled from "styled-components";
-import Profile from "./Profile";
-import TextBox from "./TextBox";
-import ImgBox from "./ImgBox";
+
 
 const Button = styled.button`
 

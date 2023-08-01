@@ -28,7 +28,7 @@ const Wrapper = styled.div`
   justify-content:space-between;
 `
 
-const Profile = ({profilePIC, nickname, coinValueBtn = true, chooseMenuBtn=false}) => {
+const Profile = ({hearts=100, profilePIC, nickname, coinValueBtn = true, chooseMenuBtn=false}) => {
     return (
         <Wrapper>
             <div>

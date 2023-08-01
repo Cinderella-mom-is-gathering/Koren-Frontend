@@ -6,7 +6,10 @@ import TextBox from "./TextBox";
 import ImgBox from "./ImgBox";
 import ApproveButton from "./ApproveButton";
 import RejectButton from "./RejectButton";
-import PostPIC from "../../assets/postPIC.png";
+import HeartButton from "./HeartButton";
+import profilePic from "../../assets/nonpic.png"
+
+
 const CardBox = styled.div`
   width: 100%;
   background-color: white;
@@ -21,13 +24,14 @@ const CardBox = styled.div`
 `;
 
 const PostCard = ({
-  profilePIC,
+  profilePIC=profilePic,
   nickname = "Agust D",
   text = "hi hi",
   url,
   approveBtn = true,
   coinValueBtn = true,
   chooseMenuBtn = false,
+    hearts=100
 }) => {
   return (
     <CardBox>
@@ -48,7 +52,10 @@ const PostCard = ({
         ) : (
           <div></div>
         )}
+
       </>
+        <HeartButton hearts={100}/>
+
     </CardBox>
   );
 };
