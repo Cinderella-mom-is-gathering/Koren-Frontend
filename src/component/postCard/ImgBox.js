@@ -13,19 +13,19 @@ const Crop = styled.img`
 
 `
 
-
-const ImgBox = ({url}) => {
+const ImgBox = ({ url }) => {
     return (
         <div>
-            <Carousel>
-                    {url.map((pic)=>(
-                        <Carousel.Item interval={1000000000}><Crop src={pic}>
-                    </Crop></Carousel.Item>))}
-
-
-            </Carousel>
-
+            {url && (
+                <Carousel>
+                    {url.map((pic) => (
+                        <Carousel.Item interval={1000000000}>
+                            <Crop src={pic}></Crop>
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
+            )}
         </div>
-    )
-}
+    );
+};
 export default ImgBox;
