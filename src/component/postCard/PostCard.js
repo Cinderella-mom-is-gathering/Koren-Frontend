@@ -54,7 +54,7 @@ const PostCard = ({
       <>
         {approveBtn === true ? (
           <>
-            <RejectButton />
+            <RejectButton postId={postId} />
             <ApproveButton />{" "}
           </>
         ) : (
