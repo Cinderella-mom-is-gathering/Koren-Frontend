@@ -34,7 +34,7 @@ const BottomNavigationBar = () => {
   const navigate = useNavigate();
   const HomeButtonHandler = () => {
     logger.debug("HomeButton Clicked!");
-    navigate('/posts');
+    navigate('/');
   };
   const BellButtonHandler = () => {
     logger.debug("BellButton Clicked!");
