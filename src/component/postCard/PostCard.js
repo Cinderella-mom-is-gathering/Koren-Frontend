@@ -40,10 +40,6 @@ const PostCard = ({
     coinValue=0,
     requesterId
 }) => {
-
-  logger.debug("PostCard postId",postId);
-  logger.debug("PostCard requesterId",requesterId);
-
     return (
     <CardBox onClick={onClickHandler}>
       <Profile

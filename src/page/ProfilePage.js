@@ -124,12 +124,11 @@ const ProfilePage = () => {
         </ProBox>
         <ProBox2>
           <b>{realName(Api.getMyAccountId())}</b>
-          <ProBox3>{"안녕하세요~" + realName(Api.getMyAccountId())+"입니다!!!"}</ProBox3>
+          <ProBox3>{"안녕하세요~" + realName(Api.getMyAccountId()) + "입니다!!!"}</ProBox3>
         </ProBox2>
         <MainWrapper>
           {myNFTs.slice().reverse().map((e) => (
             <PostCard
-                profilePIC={profilePIC}
               nickname={realName(e.owner_id)}
               text={e.metadata?.description}
               url={e.metadata?.img}

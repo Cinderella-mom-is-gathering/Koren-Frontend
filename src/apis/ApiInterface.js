@@ -163,6 +163,14 @@ export const createPost = async (description, img) => {
   return await send(Method.CALL, "nft_mint", args, deposit);
 };
 
+export const approveAd = async(tokenId, requesterId) => {
+  const args = {
+    token_id: tokenId,
+    requester_id: requesterId
+  }
+  return await send(Method.CALL, "approve_ad", args);
+}
+
 const send = async (method, methodName, args, deposit) => {
   if (connection === "mock") {
     try {
