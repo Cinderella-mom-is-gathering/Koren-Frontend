@@ -4,7 +4,7 @@ import styled from "styled-components";
 import PostCard from "../component/postCard/PostCard";
 import BottomNavigationBar from "../component/BottomNavigationBar";
 import Header from "../component/header/Header";
-import pic from "../assets/profilePIC.png";
+import pic from "../assets/nonpic.png";
 import pic1 from "../assets/pic1.png";
 import pic2 from "../assets/pic2.png";
 import pic3 from "../assets/pic3.png";
@@ -38,6 +38,7 @@ const PostListPage = () => {
       <MainWrapper>
         {posts.map((e) => (
           <PostCard
+              profilePIC={pic}
             nickname={realName(e.owner_id)}
             text={e.metadata?.description}
             url={e.metadata?.img}

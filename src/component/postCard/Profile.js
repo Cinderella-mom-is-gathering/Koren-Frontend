@@ -28,7 +28,7 @@ const Wrapper = styled.div`
   justify-content:space-between;
 `
 
-const Profile = ({profilePIC, nickname, coinValueBtn = true, chooseMenuBtn=false}) => {
+const Profile = ({coinValue, profilePIC, nickname, coinValueBtn = true, chooseMenuBtn=false}) => {
     return (
         <Wrapper>
             <div>
@@ -40,7 +40,7 @@ const Profile = ({profilePIC, nickname, coinValueBtn = true, chooseMenuBtn=false
                 </NickName>
             </div>
 
-                {coinValueBtn === true ? <UserCoinValue value={0.001}/> : (chooseMenuBtn === true? <ChooseMenu />:<></>)}
+                {coinValueBtn === true ? <UserCoinValue value={coinValue}/> : (chooseMenuBtn === true? <ChooseMenu />:<></>)}
 
         </Wrapper>
 

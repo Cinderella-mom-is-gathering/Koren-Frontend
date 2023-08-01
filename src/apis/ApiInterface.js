@@ -47,7 +47,9 @@ export const getPostByToken = async (tokenId) => {
  */
 export const getFeed = async () => {
     let count = await countPosts();
-    let posts = getPosts(count - 20, 20);
+    let index = count - 20 < 0 ? 0 : count - 20;
+    let posts = getPosts(index, 20);
+
     return posts;
 }
 
@@ -58,7 +60,9 @@ export const getFeed = async () => {
  */
 export const getLatestPostByUser = async (accountId) => {
     let count = await countPostsByUser(accountId);
-    return await getPostsByUser(accountId, count - 1, 1);
+
+    let index = count - 1 < 0 ? 0 : count - 1;
+    return await getPostsByUser(accountId, index, 1);
 };
 export const countPosts = async () => {
     return await send(Method.VIEW, "nft_total_supply");
