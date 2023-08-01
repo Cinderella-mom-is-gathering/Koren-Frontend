@@ -14,6 +14,7 @@ import { Wallet } from "./near-wallet";
 import { Environment } from "./util/Environment";
 import { useEffect, useState } from "react";
 import LoginPage from "./page/LoginPage";
+import ApprovalADPage from "./page/ApprovalADPage";
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -45,6 +46,7 @@ function App() {
         <Route path="/posts/:postId/nft" element={<PostNFTInfoPage />} />
         <Route path="/advertisements/add" element={<RequestAdPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/approval" element={<ApprovalADPage />} />
       </Routes>
     </HashRouter>
   );
