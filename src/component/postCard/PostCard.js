@@ -34,9 +34,11 @@ const PostCard = ({
   coinValueBtn = true,
   chooseMenuBtn = false,
   postId,
-    hearts=100
+    hearts=100,
+    onClickHandler,
+    coinValue=0.01
 }) => {
-  return (
+    return (
     <CardBox onClick={onClickHandler}>
       <Profile
         coinValue={coinValue}
