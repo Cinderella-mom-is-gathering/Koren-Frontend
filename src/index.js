@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+window.addEventListener('load', function() {
+    setTimeout(scrollTo, 0, 0, 1);
+}, false);
 
 /* 테스트
 import * as WalletUtil from "./util/WalletUtil";

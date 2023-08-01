@@ -16,8 +16,10 @@ const Title = styled.div`
   font-weight: 700;
   font-size: 20px;
 `;
+
 const HeaderWrapper = styled.header`
   display: flex;
+  position: fixed;
   width: 100%;
   height: 60px;
   border-bottom: 1px solid lightgray;
