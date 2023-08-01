@@ -40,6 +40,7 @@ const PostDetailPage=()=>{
                 nickname={realName(post?.owner_id)}
                 text={post?.metadata?.description}
                 url={post?.metadata?.img}
+                postId={post?.token_id}
                 approveBtn={false}
                 coinValueBtn={false}
                 chooseMenuBtn={true}

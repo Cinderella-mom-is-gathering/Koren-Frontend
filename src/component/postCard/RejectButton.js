@@ -1,10 +1,8 @@
 import React from "react";
-import context from "react-bootstrap/esm/AccordionContext";
 import styled from "styled-components";
-import { DeleteContext } from "../../page/ApprovalADPage";
-import { useContext } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import * as Api from '../../apis/ApiInterface';
 
 const Button2 = styled.button`
 
@@ -48,8 +46,15 @@ function MyVerticallyCenteredModal(props) {
 
 const RejectButton=(props)=>{
   const [modalShow, setModalShow] = React.useState(false);
+
+  const onClickHandler = () => {
+    Api.rejectAdRequest(props.postId,props.requesterId).then(() => {
+      setModalShow(true);
+    });
+  }
+
   return (<>
-    <Button2 variant="primary" onClick={() => setModalShow(true)}>
+    <Button2 variant="primary" onClick={onClickHandler}>
       거절
     </Button2>
 

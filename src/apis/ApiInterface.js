@@ -27,7 +27,7 @@ export const Method = {
   CALL: "call",
 };
 
-const approveAdRequest = async (tokenId, requesterId) => {
+export const approveAdRequest = async (tokenId, requesterId) => {
   const args = {
     token_id: tokenId,
     requester_id: requesterId
@@ -35,7 +35,7 @@ const approveAdRequest = async (tokenId, requesterId) => {
   return await send(Method.CALL, "approve_ad",args);
 }
 
-const rejectAdRequest = async (tokenId, requesterId) => {
+export const rejectAdRequest = async (tokenId, requesterId) => {
   const args = {
     token_id: tokenId,
     requester_id: requesterId

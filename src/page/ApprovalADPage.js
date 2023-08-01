@@ -31,9 +31,6 @@ const CardBox = styled.div`
   box-shadow: 0px 2px 3px 0.5px #d5d5d5;
   border-radius: 5px;
 `;
-
-const DeleteContext = React.createContext();
-
 const realName = (account) => account.split(".")[0];
 
 const ApprovalADPage = () => {
@@ -51,16 +48,12 @@ const ApprovalADPage = () => {
   };
 
 
-  const ctxValue = {
-    deleteHandler: deleteHandler,
-  };
  
 
   // console.log("광고 :", Api.getPostByToken(requestedAD[0].token_id).then(e=>console.log(e.metadata?.description)))
 
   return (
-    <DeleteContext.Provider value={ctxValue}>
-    
+      <>
       <Header
         title="문의"
         renderBackArrowButton={true}
@@ -69,7 +62,7 @@ const ApprovalADPage = () => {
       <MainWrapper></MainWrapper>
       {requestedAD.slice().reverse().map((e) => <Helper e={e} />)}
       <BottomNavigationBar />
-    </DeleteContext.Provider>
+        </>
   );
 }
 
@@ -83,7 +76,7 @@ const Helper = ({ e }) => {
   <>
   <MainWrapper>
     <CardBox>
-      <Profile nickname={realName(e.request_id)} coinValueBtn="false" />
+      <Profile nickname={realName(e.requester_id)} coinValueBtn="false" />
       <TextBox text={e.description} />
       <SubMainWrapper>
         <PostCard
@@ -95,6 +88,7 @@ const Helper = ({ e }) => {
           url={nft.metadata?.img}
           coinvaluebtn={true}
           approveBtn="false"
+          requesterId={e.requester_id}
         />
       </SubMainWrapper>
       <RejectButton />
@@ -105,5 +99,3 @@ const Helper = ({ e }) => {
 }
 
 export default ApprovalADPage;
-
-export {DeleteContext};
