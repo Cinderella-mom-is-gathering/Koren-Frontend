@@ -8,6 +8,7 @@ import ApproveButton from "../component/postCard/ApproveButton";
 import BottomNavigationBar from "../component/BottomNavigationBar";
 import Header from "../component/header/Header";
 import * as Api from "../apis/ApiInterface";
+import logger from "../util/Logger";
 
 const MainWrapper = styled.div`
   margin: 10px;
@@ -50,6 +51,7 @@ const ApprovalADPage = () => {
     setRequestedAD(requestedAD.filter((e) => e.post_id !== requestPostId));
   };
 
+
   // console.log("광고 :", Api.getPostByToken(requestedAD[0].token_id).then(e=>console.log(e.metadata?.description)))
 
   return (
@@ -70,6 +72,8 @@ const Helper = ({ e }) => {
   const [nft, setNft] = useState({ metadata: { description: "", img: [] } });
   useEffect(() => { Api.getPostByToken(e.token_id).then(setNft) }, [])
   // Api.getPostByToken(e.token_id).then(setNft)
+
+  logger.debug("NFT",nft);
 
   return (
   <>
