@@ -39,12 +39,12 @@ const ApprovalADPage = () => {
   const myText = "내가 더 잘생긴듯? ㅋㅋㅋ"
   const cardList = [1, 2, 3]
   let [requestedAD, setRequestedAD] = useState([]);
-
+  
   useEffect(() => {
     Api.getMyAdRequest().then(setRequestedAD);
   }, [])
 
-  console.log("광고 :", requestedAD[0])
+  // console.log("광고 :", Api.getPostByToken(requestedAD[0].token_id).then(e=>console.log(e.metadata?.description)))
 
   return (
     <>
@@ -54,25 +54,36 @@ const ApprovalADPage = () => {
         renderWritingPostButton={false}
       />
       <MainWrapper></MainWrapper>
-      {requestedAD.map((e) => 
-        <MainWrapper>
-          <CardBox>
-            <Profile nickname={realName(e.request_id)} coinValueBtn="false" />
-            <TextBox text={e.description} />
-            <SubMainWrapper>
-              <PostCard coinValue={e.cost/1e24} nickname={realName(Api.getMyAccountId())} text={myText} coinvaluebtn={true} approveBtn="false" />
-            </SubMainWrapper>
-            <RejectButton />
-            <ApproveButton />
-          </CardBox>
-        </MainWrapper>
-      )
-      }
-
-
+      {requestedAD.map((e) => <Helper e={e}/>)}
       <BottomNavigationBar />
     </>
   );
 };
+
+const Helper = ({e})=>{
+  const[nft,setNft]=useState({metadata:{description:"",img:[]}});
+  useEffect(()=>{Api.getPostByToken(e.token_id).then(setNft)},[])
+  // Api.getPostByToken(e.token_id).then(setNft)
+
+  return(<MainWrapper>
+    <CardBox>
+      <Profile nickname={realName(e.request_id)} coinValueBtn="false" />
+      <TextBox text={e.description} />
+      <SubMainWrapper>
+        <PostCard
+          coinValue={(e.cost / 1e24).toFixed(2)}
+          nickname={realName(Api.getMyAccountId())}
+          text={nft.metadata?.description}
+          // text={(Api.getPostByToken(e.token_id)).matadata?.description}
+          url={nft.metadata?.img}
+          coinvaluebtn={true}
+          approveBtn="false"
+        />
+      </SubMainWrapper>
+      <RejectButton />
+      <ApproveButton />
+    </CardBox>
+  </MainWrapper>)
+}
 
 export default ApprovalADPage;
