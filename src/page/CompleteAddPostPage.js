@@ -1,24 +1,34 @@
-import React from 'react';
-import styled from 'styled-components';
-import Profile from '../component/postCard/Profile';
-import TextBox from '../component/postCard/TextBox';
-import ImgBox from '../component/postCard/ImgBox';
-import SubmitButton from '../component/SubmitButton';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import Profile from "../component/postCard/Profile";
+import TextBox from "../component/postCard/TextBox";
+import ImgBox from "../component/postCard/ImgBox";
+import SubmitButton from "../component/SubmitButton";
 import Header from "../component/header/Header";
-import PIC from "../assets/profilePIC.png"
+import PIC from "../assets/profilePIC.png";
+import { getLatestPostByUser, getMyAccountId } from "../apis/ApiInterface";
 
 const MainWrapper = styled.div`
   margin: 20px;
   position: relative;
   padding: 10px;
+  /* margin-bottom: 80px; */
+  display: flex;
+  flex-direction: column;
+`;
 
+const MainWrapperForBottom = styled.div`
+  margin: 20px;
+  position: relative;
+  padding: 10px;
+  margin-bottom: 80px;
   display: flex;
   flex-direction: column;
 `;
 
 const TableWrapper = styled.div`
-    margin-right: 20px;
-    margin-left: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
 `;
 
 const Table = styled.table`
@@ -39,47 +49,80 @@ const ValueCell = styled.td`
   /* value 셀에 별도 스타일이 필요 없으므로 아무 스타일도 지정하지 않음 */
 `;
 
+const SpaceHeader = styled.div`
+  height: 60px;
+  width: 100%;
+`;
+
 const TableRow = ({ label, value }) => (
-    <tr>
-        <LabelCell>{label}</LabelCell>
-        <ValueCell>{value}</ValueCell>
-    </tr>
+  <tr>
+    <LabelCell>{label}</LabelCell>
+    <ValueCell>{value}</ValueCell>
+  </tr>
 );
 
 const CompleteAddPostPage = () => {
-    return (
+  const [postInfo, setPostInfo] = useState({});
+
+  useEffect(() => {
+    const userId = getMyAccountId();
+    getLatestPostByUser(userId).then((result) => {
+      console.log(result);
+      setPostInfo(result[0]);
+    });
+  }, []);
+
+  console.log(postInfo);
+
+  return (
+    <>
+      {postInfo && (
         <div>
-            <Header
-                title=""
-                renderBackArrowButton={true}
-                renderWritingPostButton={false}
+          <SpaceHeader />
+          <MainWrapper>
+            <h1>
+              <b>등록이 완료되었습니다!</b>
+            </h1>
+          </MainWrapper>
+          <MainWrapper>
+            <h4>
+              <b>NFT정보</b>
+            </h4>
+          </MainWrapper>
+          <MainWrapper>
+            <Profile
+              profilePIC={PIC}
+              nickname={postInfo.owner_id?.split(".")[0]}
+              approveBtn={false}
+              coinValueBtn={false}
+              chooseMenuBtn={false}
             />
-            <MainWrapper>
-                <h1><b>등록이 완료되었습니다!</b></h1>
-            </MainWrapper>
-            <MainWrapper>
-                <h4><b>NFT정보</b></h4>
-            </MainWrapper>
-            <MainWrapper>
-                <Profile profilePIC={PIC} nickname="Agust D" approveBtn={false} coinValueBtn={false} chooseMenuBtn={false}/>
-                <TextBox />
-                <ImgBox />
-            </MainWrapper>
-            <div style={{ borderBottom: '1px solid #E9E9E9' }}></div>
-            <MainWrapper>
-                <TableWrapper>
-                    <Table>
-                        <tbody>
-                            <TableRow label="크리에이터" value="songsk" />
-                            <TableRow label="컨트랙트 주소" value="348f64fbg23f3f3f" />
-                            <TableRow label="토큰 ID" value="11" />
-                        </tbody>
-                    </Table>
-                </TableWrapper>
-            </MainWrapper>
-            <SubmitButton content="확인" />
+            <TextBox text={postInfo.metadata?.description} />
+            <ImgBox url={postInfo.metadata?.media} />
+          </MainWrapper>
+          <div style={{ borderBottom: "1px solid #E9E9E9" }}></div>
+          <MainWrapperForBottom>
+            <TableWrapper>
+              <Table>
+                <tbody>
+                  <TableRow
+                    label="크리에이터"
+                    value={postInfo.owner_id?.split(".")[0]}
+                  />
+                  <TableRow
+                    label="컨트랙트 주소"
+                    value={process.env.REACT_APP_CONTRACT_ADDRESS}
+                  />
+                  <TableRow label="토큰 ID" value={postInfo.token_id} />
+                </tbody>
+              </Table>
+            </TableWrapper>
+          </MainWrapperForBottom>
+          <SubmitButton content="확인" />
         </div>
-    );
+      )}
+    </>
+  );
 };
 
 export default CompleteAddPostPage;
