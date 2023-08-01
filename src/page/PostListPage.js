@@ -37,7 +37,7 @@ const PostListPage = () => {
     <>
       <Header
         renderBackArrowButton={false}
-        title="Memting"
+        title="Koren"
         renderWritingPostButton={true}
       />
 
