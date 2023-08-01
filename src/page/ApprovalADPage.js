@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { styled } from "styled-components";
 import Profile from "../component/postCard/Profile";
 import TextBox from "../component/postCard/TextBox";
@@ -32,42 +32,62 @@ const CardBox = styled.div`
   border-radius: 5px;
 `;
 
+const DeleteContext = React.createContext();
+
 const realName = (account) => account.split(".")[0];
 
 const ApprovalADPage = () => {
   let [requestedAD, setRequestedAD] = useState([]);
-  
+
   useEffect(() => {
     Api.getMyAdRequest().then(setRequestedAD);
   }, [])
 
+
+
+  const deleteHandler = (requestPostId) => {
+  
+    setRequestedAD(requestedAD.filter((e) => e.post_id !== requestPostId));
+  };
+
+
+  const ctxValue = {
+    deleteHandler: deleteHandler,
+  };
+ 
+
   // console.log("광고 :", Api.getPostByToken(requestedAD[0].token_id).then(e=>console.log(e.metadata?.description)))
 
   return (
-    <>
+    <DeleteContext.Provider value={ctxValue}>
+    
       <Header
         title="문의"
         renderBackArrowButton={true}
         renderWritingPostButton={false}
       />
       <MainWrapper></MainWrapper>
-      {requestedAD.slice().reverse().map((e) => <Helper e={e}/>)}
+      {requestedAD.slice().reverse().map((e) => <Helper e={e} />)}
       <BottomNavigationBar />
-    </>
+    </DeleteContext.Provider>
   );
-};
+}
 
-const Helper = ({e})=>{
-  const[nft,setNft]=useState({metadata:{description:"",img:[]}});
-  useEffect(()=>{Api.getPostByToken(e.token_id).then(setNft)},[])
+const Helper = ({ e }) => {
+  const [nft, setNft] = useState({ metadata: { description: "", img: [] } });
+  useEffect(() => { Api.getPostByToken(e.token_id).then(setNft) }, [])
   // Api.getPostByToken(e.token_id).then(setNft)
 
-  return(<MainWrapper>
+  
+  return (
+  <>
+  <MainWrapper>
     <CardBox>
       <Profile nickname={realName(e.request_id)} coinValueBtn="false" />
       <TextBox text={e.description} />
       <SubMainWrapper>
         <PostCard
+          postId={e.token_id}
           coinValue={(e.cost / 1e24).toFixed(2)}
           nickname={realName(Api.getMyAccountId())}
           text={nft.metadata?.description}
@@ -80,7 +100,10 @@ const Helper = ({e})=>{
       <RejectButton />
       <ApproveButton />
     </CardBox>
-  </MainWrapper>)
+  </MainWrapper>
+  </>)
 }
 
 export default ApprovalADPage;
+
+export {DeleteContext};
