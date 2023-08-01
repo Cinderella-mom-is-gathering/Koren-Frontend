@@ -42,24 +42,24 @@ const PostListPage = () => {
                 renderWritingPostButton={true}
             />
 
-            <MainWrapper>
-                {posts.map((e) => (
-                    <PostCard
-                        key={e.token_id}
-                        postId={e.token_id}
-                        onClickHandler={() => goDetailPageHandler(e.token_id)}
-                        profilePIC={pic}
-                        nickname={realName(e.owner_id)}
-                        text={e.metadata?.description}
-                        url={e.metadata?.img}
-                        approveBtn={false}
-                        coinValueBtn={false}
-                        chooseMenuBtn={true}
-                    />
-                ))}
-            </MainWrapper>
-            <BottomNavigationBar/>
-        </>
-    );
+      <MainWrapper>
+        {posts.slice().reverse().map((e) => (
+          <PostCard
+            key={e.token_id}
+            postId={e.token_id}
+              onClickHandler={() => goDetailPageHandler(e.token_id)}
+              profilePIC={pic}
+            nickname={realName(e.owner_id)}
+            text={e.metadata?.description}
+            url={e.metadata?.img}
+            approveBtn={false}
+            coinValueBtn={false}
+            chooseMenuBtn={true}
+          />
+        ))}
+      </MainWrapper>
+      <BottomNavigationBar />
+    </>
+  );
 };
 export default PostListPage;

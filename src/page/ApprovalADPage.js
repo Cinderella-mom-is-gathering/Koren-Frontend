@@ -35,9 +35,6 @@ const CardBox = styled.div`
 const realName = (account) => account.split(".")[0];
 
 const ApprovalADPage = () => {
-  const text = "이거 사고 싶어요 팔아주세요"
-  const myText = "내가 더 잘생긴듯? ㅋㅋㅋ"
-  const cardList = [1, 2, 3]
   let [requestedAD, setRequestedAD] = useState([]);
   
   useEffect(() => {
@@ -54,7 +51,7 @@ const ApprovalADPage = () => {
         renderWritingPostButton={false}
       />
       <MainWrapper></MainWrapper>
-      {requestedAD.map((e) => <Helper e={e}/>)}
+      {requestedAD.slice().reverse().map((e) => <Helper e={e}/>)}
       <BottomNavigationBar />
     </>
   );

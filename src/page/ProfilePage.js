@@ -7,11 +7,10 @@ import TextBox from "../component/postCard/TextBox";
 import ImgBox from "../component/postCard/ImgBox";
 import SubmitButton from "../component/SubmitButton";
 import Header from "../component/header/Header";
-import PostPIC from "../assets/background.png"; //이미지 불러오기
-import profilePIC from "../assets/logopic.png";
+import PostPIC from "../assets/postPIC.png"; //이미지 불러오기
+import profilePIC from "../assets/profilePIC.png";
 import { Environment } from "../util/Environment";
 import * as Api from "../apis/ApiInterface";
-import { get } from 'https-browserify';
 
 const MainWrapper = styled.div`
   position: relative;
@@ -99,9 +98,9 @@ const realName = (account) => account.split(".")[0];
 const callPostCard = (e) => console.log(e);
 
 const ProfilePage = () => {
-  const myName="내이름"
-  //const myName=realName(getMyAccountId())
-  const myInstro='안녕 나는 어거스트D슈가'
+  const repeatedSections = [1, 2, 3];
+  const myName = "rla";
+  const myInstro = "안녕 나는 어거스트D슈가";
   // const myName=realName(wallet.accountId);
   let [myNFTs, setMyNFTs] = useState([]);
   /**
@@ -127,21 +126,22 @@ const ProfilePage = () => {
           <ProImg src={profilePIC} />
         </ProBox>
         <ProBox2>
-          <b>{realName(Api.getMyAccountId())}</b>
+          <b>{myName}</b>
           <ProBox3>{myInstro}</ProBox3>
         </ProBox2>
         <MainWrapper>
-            {myNFTs.map((e) => (
+          {myNFTs.slice().reverse().map((e) => (
             <PostCard
               nickname={realName(e.owner_id)}
               text={e.metadata?.description}
               url={e.metadata?.img}
-              profilePIC={profilePIC}
               approveBtn={false}
-              coinValueBtn={true}
-              chooseMenuBtn={false}
+              coinvalueBtn={false}
             />
           ))}
+          {/* {repeatedSections.map((index) => (
+          <PostCard nickname={myName} text={index} approvebtn={false} coinvaluebtn={false} />
+        ))} */}
         </MainWrapper>
       </MainWrapper>
 
