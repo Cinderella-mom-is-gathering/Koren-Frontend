@@ -19,6 +19,8 @@ const HeartButton=({hearts})=>{
     const Click=(event)=>{
         setClicked(!Clicked);
     }
+    const heart = Math.round(100*(Math.random()));
+
     return(
         <>
         <HeartBtn onClick={Click}>
@@ -28,7 +30,7 @@ const HeartButton=({hearts})=>{
                 }
         </HeartBtn>
         <HeartNum>
-            {hearts}
+            {heart}
         </HeartNum>
         </>
             );
