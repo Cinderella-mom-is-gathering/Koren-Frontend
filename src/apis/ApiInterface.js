@@ -30,6 +30,10 @@ export const greeting = async () => {
     return await send(Method.VIEW, "get_greeting");
 };
 
+export const getMyAccountId = () => {
+    return WalletUtil.getAccountId();
+}
+
 export const getPostByToken = async (tokenId) => {
     const args = {
         token_id: tokenId
