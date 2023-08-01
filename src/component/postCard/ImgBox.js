@@ -1,5 +1,5 @@
 import React from "react";
-import PostPIC from "../../assets/postPIC.png"
+
 import styled from "styled-components";
 
 const Crop = styled.img`
