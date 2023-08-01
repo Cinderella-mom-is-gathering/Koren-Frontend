@@ -68,6 +68,7 @@ const CompleteAddPostPage = () => {
     const userId = getMyAccountId();
     getLatestPostByUser(userId).then((result) => {
       console.log(result);
+
       setPostInfo(result[0]);
     });
   }, []);
@@ -98,7 +99,7 @@ const CompleteAddPostPage = () => {
               chooseMenuBtn={false}
             />
             <TextBox text={postInfo.metadata?.description} />
-            <ImgBox url={postInfo.metadata?.media} />
+            {/* <ImgBox url={postInfo.metadata?.media} /> */}
           </MainWrapper>
           <div style={{ borderBottom: "1px solid #E9E9E9" }}></div>
           <MainWrapperForBottom>
