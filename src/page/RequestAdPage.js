@@ -1,55 +1,61 @@
-import styled from "styled-components";
-import PostCard from "../component/postCard/PostCard";
-import React from "react";
-import Profile from "../component/postCard/Profile";
-import TextBox from "../component/postCard/TextBox";
-import ImgBox from "../component/postCard/ImgBox";
-import RejectButton from "../component/postCard/RejectButton";
-import ApproveButton from "../component/postCard/ApproveButton";
-import BottomNavigationBar from "../component/BottomNavigationBar";
+import React, { useState } from "react";
+import { AddTextInputPageWrapper } from "./AddPostPage";
+import Header from "../component/header/Header";
+import { TextInput } from "../component/TextInput";
+import { TextInputBottomBar } from "../component/TextInputBottomBar";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "../util/FirebaseInit";
+import { styled } from "styled-components";
 
-const MainWrapper = styled.div`
-  margin: 10px;
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-`
-const SubMainWrapper = styled.div`
-  margin: 10px;
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-
-`
-const CardBox = styled.div`
+const CostInput = styled.input`
   width: 100%;
-  background-color: white;
-  padding-top: 15px;
-  padding-bottom: 20px;
-  box-shadow: 0px 2px 3px 0.5px #D5D5D5;
-  border-radius: 5px;
-`
+  height: 30px;
+  /* border: none; */
+  padding: 10px;
+  background-color: #fbfbfb;
+`;
+
 const RequestAdPage = () => {
-    return (
-        <>
-            <MainWrapper>
-                <CardBox>
-                    <Profile nickname='Agust D' coinvaluebtn={false}/>
-                    <TextBox></TextBox>
-                    <SubMainWrapper>
-                        <PostCard coinvaluebtn={true} approvebtn={false}/>
-                    </SubMainWrapper>
-                    <RejectButton/>
-                    <ApproveButton/>
+  const [height, setHeight] = useState(0);
+  const [cost, setCost] = useState(0);
+  const [imageFile, setImageFile] = useState([]);
 
-                </CardBox>
-            </MainWrapper>
-            <BottomNavigationBar/>
-        </>
+  const onSubmit = () => {
+    console.log("firebase에 업로드");
 
-    )
-}
+    for (let i = 0; i < imageFile.length; i++) {
+      const storageRef = ref(storage, imageFile[i].name);
+      uploadBytes(storageRef, imageFile[i]).then((snapshot) => {
+        console.log(snapshot);
+        //   console.log("Uploaded a blob or file!");
+
+        getDownloadURL(storageRef).then((url) => {
+          console.log(url);
+        });
+      });
+    }
+  };
+
+  // const onChange = (e) => {
+  //   setCost(e.target.value);
+  // };
+
+  return (
+    <AddTextInputPageWrapper>
+      <Header renderBackArrowButton={true} title="포스트 작성" />
+      <CostInput
+        type="number"
+        value={cost}
+        onChange={(event) => setCost(event.target.value)}
+      />
+      <TextInput />
+      <TextInputBottomBar
+        height={height}
+        setImageFile={setImageFile}
+        onSubmit={onSubmit}
+      />
+    </AddTextInputPageWrapper>
+  );
+};
 
 export default RequestAdPage;
