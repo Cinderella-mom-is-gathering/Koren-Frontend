@@ -38,7 +38,7 @@ export const getPostByToken = async (tokenId) => {
     const args = {
         token_id: tokenId
     };
-    return await send(Method.VIEW, "nft_tokena", args);
+    return await send(Method.VIEW, "nft_token", args);
 }
 
 export const getLatestPostByUser = async (accountId) => {
@@ -61,7 +61,7 @@ export const getPostsByUser = async (accountId, index, limit) => {
 
     const args = {
         account_id: accountId,
-        index: index,
+        from_index: index,
         limit: limit,
     };
     return await send(Method.VIEW, "nft_tokens_for_owner", args);
@@ -106,7 +106,7 @@ export const getMyPosts = async (index, limit) => {
 
     const args = {
         account_id: WalletUtil.getAccountId(),
-        index: index,
+        from_index: index,
         limit: limit,
     };
     return await send(Method.VIEW, "nft_tokens_for_owner", args);
