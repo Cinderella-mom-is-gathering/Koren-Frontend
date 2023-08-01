@@ -1,21 +1,23 @@
 {
   "files": {
     "main.css": "/Meme/static/css/main.76839bfb.css",
-    "main.js": "/Meme/static/js/main.08fae457.js",
+    "main.js": "/Meme/static/js/main.f9d978ed.js",
     "static/js/787.b6f1fb86.chunk.js": "/Meme/static/js/787.b6f1fb86.chunk.js",
     "static/media/comment2.svg": "/Meme/static/media/comment2.936605835950c852fc2e2d413b7cf128.svg",
+    "static/media/comment5.svg": "/Meme/static/media/comment5.a1545dc83127174394b190530875f7d6.svg",
     "static/media/comment1.svg": "/Meme/static/media/comment1.c36ea4d17b8b0be87d9c6248d06617bb.svg",
     "static/media/postPIC.png": "/Meme/static/media/postPIC.4dfb815e9a2a7f1a7b98.png",
+    "static/media/comment4.svg": "/Meme/static/media/comment4.c7fe8546de27e8374f7d30631204fa97.svg",
     "static/media/comment3.svg": "/Meme/static/media/comment3.b597850e289174443fd8170a01d60d44.svg",
     "static/media/my-near-wallet-icon.png": "/Meme/static/media/my-near-wallet-icon.21577bc85de47e042ffc.png",
     "static/media/pic2.png": "/Meme/static/media/pic2.d5c23e826669e1af7417.png",
     "index.html": "/Meme/index.html",
     "main.76839bfb.css.map": "/Meme/static/css/main.76839bfb.css.map",
-    "main.08fae457.js.map": "/Meme/static/js/main.08fae457.js.map",
+    "main.f9d978ed.js.map": "/Meme/static/js/main.f9d978ed.js.map",
     "787.b6f1fb86.chunk.js.map": "/Meme/static/js/787.b6f1fb86.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.76839bfb.css",
-    "static/js/main.08fae457.js"
+    "static/js/main.f9d978ed.js"
   ]
 }
