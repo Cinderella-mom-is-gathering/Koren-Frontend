@@ -14,9 +14,10 @@ import * as Api from "../apis/ApiInterface";
 import { get } from 'https-browserify';
 
 const MainWrapper = styled.div`
-  margin: 15px;
   position: relative;
 
+  padding-right: 10px;
+  padding-left: 10px;
   display: flex;
   flex-direction: column;
 `;
@@ -61,7 +62,7 @@ const ProImg = styled.img`
   margin-left: 20px;
   margin-right: 10px;
   position: absolute;
-  top: 220px;
+  top: 160px;
   left: 20px;
 `;
 
@@ -70,15 +71,18 @@ const ProBox = styled.div`
 `;
 
 const ProBox2 = styled.div`
-  margin-top: 60px;
   margin-left: 40px;
   margin-right: 40px;
-  height: 50px;
+
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 26px;
 `;
 
 const ProBox3 = styled.div`
-  margin-top: 15px;
-  height: 50px;
+  margin-left: 0px;
+  font-size: 15px;
 `;
 
 // console.log("아이디 : ", WalletUtil.getAccountId());
@@ -130,8 +134,8 @@ const ProfilePage = () => {
           {myNFTs.map((e) => (
             <PostCard
               nickname={realName(e.owner_id)}
-              text={e.metadata.description}
-              url={e.metadata.media}
+              text={e.metadata?.description}
+              url={e.metadata?.img}
               approvebtn={false}
               coinvaluebtn={false}
             />
