@@ -5,7 +5,6 @@ import {AiFillHeart, AiOutlineHeart} from "react-icons/ai";
 const HeartBtn=styled.button`
   border: 0;
   background-color: transparent;
-  
   width: 20px;
 `
 const HeartNum=styled.div`
@@ -22,8 +21,8 @@ const HeartButton=({hearts})=>{
         <>
         <HeartBtn onClick={Click}>
             {Clicked?
-                <AiFillHeart style={{"width":"25px","height":"25px"}}/>:
-            <AiOutlineHeart style={{"width":"25px","height":"25px"}}/>
+                <AiFillHeart style={{"width":"25px","height":"25px","color":"#25CAEF"}}/>:
+            <AiOutlineHeart style={{"width":"25px","height":"25px","color":"#25CAEF"}}/>
                 }
         </HeartBtn>
         <HeartNum>
