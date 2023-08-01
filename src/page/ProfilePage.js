@@ -137,6 +137,7 @@ const ProfilePage = () => {
               url={e.metadata?.img}
               approveBtn={false}
               coinvalueBtn={false}
+              coinValue={(e.cost / 1e24).toFixed(2)}
             />
           ))}
           {/* {repeatedSections.map((index) => (
