@@ -43,7 +43,7 @@ const PostListPage = () => {
             />
 
       <MainWrapper>
-        {posts.slice().reverse().map((e) => (
+        {posts?.slice().reverse().map((e) => (
           <PostCard
             key={e.token_id}
             postId={e.token_id}
@@ -55,7 +55,7 @@ const PostListPage = () => {
             approveBtn={false}
             coinValueBtn={false}
             chooseMenuBtn={true}
-            hearts={}
+            hearts={10}
           />
         ))}
       </MainWrapper>
