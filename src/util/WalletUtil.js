@@ -39,7 +39,6 @@ export const signOut = () => {
  * gas와 deposit 까지 전달된 경우 callMethod가 호출됩니다.
  * @param method
  * @param args
- * @param gas
  * @param deposit
  * @returns {Promise<*>}
  */
