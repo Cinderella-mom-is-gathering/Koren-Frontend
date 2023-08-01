@@ -26,6 +26,23 @@ export const Method = {
   VIEW: "view",
   CALL: "call",
 };
+
+const approveAdRequest = async (tokenId, requesterId) => {
+  const args = {
+    token_id: tokenId,
+    requester_id: requesterId
+  }
+  return await send(Method.CALL, "approve_ad",args);
+}
+
+const rejectAdRequest = async (tokenId, requesterId) => {
+  const args = {
+    token_id: tokenId,
+    requester_id: requesterId
+  };
+  return await send(Method.CALL,"deny_ad",args);
+
+}
 export const greeting = async () => {
   return await send(Method.VIEW, "get_greeting");
 };
