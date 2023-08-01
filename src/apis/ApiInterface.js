@@ -72,7 +72,7 @@ export const createPost = async (description, img) => {
 
     return await send("nft_mint",args,deposit)
 }
-const send = async (method, args, gas, deposit) => {
+const send = async (method, args, deposit) => {
     if(connection === 'mock') {
         try{
             return executeMockContractMethod(method,args,deposit);
