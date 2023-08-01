@@ -38,6 +38,7 @@ const PostCard = ({
     onClickHandler,
     coinValue=0.01
 }) => {
+
     return (
     <CardBox onClick={onClickHandler}>
       <Profile
