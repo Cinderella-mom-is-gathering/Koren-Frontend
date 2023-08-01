@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import Profile from "../component/postCard/Profile";
 import TextBox from "../component/postCard/TextBox";
@@ -7,6 +7,7 @@ import RejectButton from "../component/postCard/RejectButton";
 import ApproveButton from "../component/postCard/ApproveButton";
 import BottomNavigationBar from "../component/BottomNavigationBar";
 import Header from "../component/header/Header";
+import * as Api from "../apis/ApiInterface";
 
 const MainWrapper = styled.div`
   margin: 10px;
@@ -35,6 +36,14 @@ const ApprovalADPage = () => {
   const text = "이거 사고 싶어요 팔아주세요"
   const myText = "내가 더 잘생긴듯? ㅋㅋㅋ"
   const cardList = [1, 2, 3]
+  let [requestedAD, setRequestedAD] = useState([]);
+
+  useEffect(() => {
+    Api.getMyAdRequest().then(setRequestedAD);
+  }, [])
+
+  console.log("광고 :", requestedAD[0])
+
   return (
     <>
       <Header
@@ -43,7 +52,7 @@ const ApprovalADPage = () => {
         renderWritingPostButton={false}
       />
       <MainWrapper></MainWrapper>
-      {cardList.map((e) => 
+      {requestedAD.map((e) => 
         <MainWrapper>
           <CardBox>
             <Profile nickname="구매자계정" coinValueBtn="false" />
