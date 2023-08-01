@@ -6,6 +6,7 @@ const HeartBtn=styled.button`
   border: 0;
   background-color: transparent;
   width: 20px;
+  margin-top:10px;
 `
 const HeartNum=styled.div`
   margin-left:15px;
