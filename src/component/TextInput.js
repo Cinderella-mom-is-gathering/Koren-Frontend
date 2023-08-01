@@ -18,17 +18,22 @@ const TextArea = styled.textarea`
   }
   border: none;
 `;
-export const TextInput = () => {
+export const TextInput = ({ contents, setContents, isOnFocus }) => {
   const inputRef = React.useRef(null);
 
   useLayoutEffect(() => {
-    if (inputRef.current !== null) inputRef.current.focus();
+    if (inputRef.current !== null && isOnFocus) inputRef.current.focus();
   });
 
   return (
     <Form>
       <TextAreaWrapper>
-        <TextArea maxLength={1000} ref={inputRef} />
+        <TextArea
+          maxLength={1000}
+          ref={inputRef}
+          value={contents}
+          onChange={(event) => setContents(event.target.value)}
+        />
       </TextAreaWrapper>
       {/*<Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">*/}
       {/*    /!*<Form.Label>Example textarea</Form.Label>*!/*/}

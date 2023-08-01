@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-
 /* 테스트
 import * as WalletUtil from "./util/WalletUtil";
 await WalletUtil.init().then(

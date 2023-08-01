@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import { AiOutlineHome, AiOutlineBell } from 'react-icons/ai';
-import { MdOutlinePersonOutline } from 'react-icons/md';
-import {useNavigate} from "react-router-dom";
+import React from "react";
+import styled from "styled-components";
+import { AiOutlineHome, AiOutlineBell } from "react-icons/ai";
+import { MdOutlinePersonOutline } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import logger from "../util/Logger";
 
 const StyledFooter = styled.div`
@@ -14,8 +14,7 @@ const StyledFooter = styled.div`
   left: 0;
   width: 100%;
   background-color: cornflowerblue;
-  
-  `;
+`;
 
 const Button = styled.button`
   -webkit-appearance: none;
@@ -30,19 +29,18 @@ const Button = styled.button`
 `;
 
 const BottomNavigationBar = () => {
-
   const navigate = useNavigate();
   const HomeButtonHandler = () => {
     logger.debug("HomeButton Clicked!");
-    navigate('/posts');
+    navigate("/posts");
   };
   const BellButtonHandler = () => {
     logger.debug("BellButton Clicked!");
-    navigate('/advertisements/add');
+    navigate("/approval");
   };
   const PersonButtonHandler = () => {
     logger.debug("PersonButton Clicked!");
-    navigate('/profile');
+    navigate("/profile");
   };
 
   return (

@@ -16,7 +16,7 @@ const TextInputBottomBarWrapper = styled.div`
   border-top: 1px solid #e5e5e5;
 `;
 
-const AddImageButton = styled.div`
+const AddImageButtonWapper = styled.div`
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -24,6 +24,17 @@ const AddImageButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  input[type="file"] {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    opacity: 0;
+    border-radius: 50%;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+  }
 `;
 
 const AddPostButton = styled.div`
@@ -43,15 +54,31 @@ const Text = styled.div`
   align-items: center;
 `;
 
-export const TextInputBottomBar = ({ height }) => {
+export const TextInputBottomBar = ({ height, setImageFile, onSubmit }) => {
+  const onChangeImage = (event) => {
+    for (let i = 0; i < event.target.files.length; i++) {
+      console.log(event.target.files[i]);
+    }
+    // console.log(event.target.files);
+    setImageFile(event.target.files);
+  };
+
   return (
     <TextInputBottomBarWrapper height={height}>
-      <AddImageButton>
+      <AddImageButtonWapper>
+        <input
+          type="file"
+          multiple="multiple"
+          accept="image/*"
+          onChange={onChangeImage}
+          alt=""
+        />
         <MdPhoto size={20} color={"#ffffff"} />
-      </AddImageButton>
-      <AddPostButton>
-        <Text>{"등록"}</Text>
-      </AddPostButton>
+      </AddImageButtonWapper>
+
+      {/* <MdPhoto size={20} color={"#ffffff"} /> */}
+      {/* </input> */}
+      <AddPostButton onClick={onSubmit}>{"등록"}</AddPostButton>
     </TextInputBottomBarWrapper>
   );
 };

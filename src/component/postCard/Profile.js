@@ -34,7 +34,7 @@ const Profile = ({profilePIC, nickname, coinValueBtn = true, chooseMenuBtn=false
                 {nickname}
             </NickName>
             <>
-                {coinValueBtn === true ? <UserCoinValue value={0.001}/> : <> {chooseMenuBtn === true? <ChooseMenu style={{"margin": "10px"}}/>:<></>}</>}
+                {coinValueBtn === true ? <UserCoinValue value={0.001}/> : <> {chooseMenuBtn === true? <ChooseMenu />:<></>}</>}
             </>
         </div>
 
