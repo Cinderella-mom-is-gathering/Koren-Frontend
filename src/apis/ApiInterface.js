@@ -48,7 +48,7 @@ export const getPostByToken = async (tokenId) => {
 export const getFeed = async () => {
     let count = await countPosts();
     let posts = getPosts(count - 20, 20);
-    return await posts.reversed();
+    return await posts.reverse();
 }
 
 /**
