@@ -18,26 +18,39 @@ export const AddTextInputPageWrapper = styled.div`
 const AddPostPage = () => {
   const [height, setHeight] = useState(0);
   const [imageFiles, setImageFiles] = useState([]);
+  const [imageUrls, setImageUrls] = useState([]); // [url1, url2, url3
   const [contents, setContents] = useState("");
 
-  const onSubmit = () => {
-    console.log("firebase에 업로드");
-
+  const uploadPhotos = async () => {
+    let urls = [];
     for (let i = 0; i < imageFiles.length; i++) {
       const storageRef = ref(storage, imageFiles[i].name);
-      uploadBytes(storageRef, imageFiles[i]).then((snapshot) => {
+      await uploadBytes(storageRef, imageFiles[i]).then((snapshot) => {
         console.log(snapshot);
-        //   console.log("Uploaded a blob or file!");
-
-        getDownloadURL(storageRef).then((url) => {
-          console.log(url);
-
-          createPost(contents, imageFiles).then((result) => {
-            console.log(result);
-          });
-        });
       });
+      console.log("업로드 완료");
+      const url = await getDownloadURL(storageRef);
+      console.log("uri get!");
+      // setImageUrls((prev) => prev.concat([url]));
+      urls.push(url);
     }
+    console.log("사진 업로드 완료", imageUrls, urls);
+
+    return urls;
+  };
+
+  const uploadPost = (urls) => {
+    console.log("사진 업로드 완료", imageUrls);
+    createPost(contents, urls).then((result) => {
+      console.log("업로드 완료");
+    });
+  };
+
+  const onSubmit = async () => {
+    console.log("firebase에 업로드");
+
+    const urls = await uploadPhotos();
+    uploadPost(urls);
   };
 
   useEffect(() => {
@@ -46,10 +59,15 @@ const AddPostPage = () => {
       console.log(prevVisualViewport);
     }
   }, []);
+
   return (
     <AddTextInputPageWrapper>
       <Header renderBackArrowButton={true} title="포스트 작성" />
-      <TextInput contents={contents} setContents={setContents} />
+      <TextInput
+        contents={contents}
+        setContents={setContents}
+        isOnFocus={true}
+      />
       <TextInputBottomBar
         height={height}
         setImageFile={setImageFiles}

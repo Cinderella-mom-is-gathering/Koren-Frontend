@@ -17,7 +17,8 @@ const CostInput = styled.input`
 
 const RequestAdPage = () => {
   const [height, setHeight] = useState(0);
-  const [cost, setCost] = useState(0);
+  const [cost, setCost] = useState("");
+  const [contents, setContents] = useState("");
   const [imageFile, setImageFile] = useState([]);
 
   const onSubmit = () => {
@@ -42,13 +43,17 @@ const RequestAdPage = () => {
 
   return (
     <AddTextInputPageWrapper>
-      <Header renderBackArrowButton={true} title="포스트 작성" />
+      <Header renderBackArrowButton={true} title="일반 문의 작성" />
       <CostInput
         type="number"
         value={cost}
         onChange={(event) => setCost(event.target.value)}
       />
-      <TextInput />
+      <TextInput
+        contents={contents}
+        setContents={setContents}
+        isOnFocus={false}
+      />
       <TextInputBottomBar
         height={height}
         setImageFile={setImageFile}
