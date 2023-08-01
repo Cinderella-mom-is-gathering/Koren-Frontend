@@ -18,7 +18,7 @@ const Dropdown = styled.div`
   display: inline-flex;
   align-items: center;
   justify-content: space-around;
-  z-index: 99;
+
 `;
 const DropdownContent = styled.div`
   position: absolute;
