@@ -7,6 +7,7 @@ import SubmitButton from "../component/SubmitButton";
 import Header from "../component/header/Header";
 import PIC from "../assets/profilePIC.png";
 import { getLatestPostByUser, getMyAccountId } from "../apis/ApiInterface";
+import { useNavigate } from "react-router-dom";
 
 const MainWrapper = styled.div`
   margin: 20px;
@@ -62,6 +63,7 @@ const TableRow = ({ label, value }) => (
 );
 
 const CompleteAddPostPage = () => {
+  const navigate = useNavigate();
   const [postInfo, setPostInfo] = useState({});
 
   useEffect(() => {
@@ -99,7 +101,7 @@ const CompleteAddPostPage = () => {
               chooseMenuBtn={false}
             />
             <TextBox text={postInfo.metadata?.description} />
-            {/* <ImgBox url={postInfo.metadata?.media} /> */}
+            <ImgBox url={postInfo.metadata?.img} />
           </MainWrapper>
           <div style={{ borderBottom: "1px solid #E9E9E9" }}></div>
           <MainWrapperForBottom>
@@ -119,7 +121,7 @@ const CompleteAddPostPage = () => {
               </Table>
             </TableWrapper>
           </MainWrapperForBottom>
-          <SubmitButton content="확인" />
+          <SubmitButton content="확인" onClick={() => navigate("/posts")} />
         </div>
       )}
     </>
