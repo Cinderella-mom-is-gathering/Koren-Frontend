@@ -11,6 +11,7 @@ import pic3 from "../assets/pic3.png";
 import userCoinValue from "../component/postCard/UserCoinValue";
 import * as Api from "../apis/ApiInterface";
 import { getPosts } from "../apis/ApiInterface";
+import {useNavigate} from "react-router-dom";
 
 const MainWrapper = styled.div`
   margin: 15px;
@@ -23,10 +24,16 @@ const realName = (account) => account.split(".")[0];
 
 const pics = [pic1, pic2, pic3];
 const PostListPage = () => {
+
+    const navigate = useNavigate();
   let [posts, setPosts] = useState([]);
   useEffect(() => {
     Api.getFeed().then(setPosts);
   }, []);
+
+  const goDetailPageHandler = (tokenId) => {
+      navigate("/posts/"+tokenId);
+  }
   return (
     <>
       <Header
@@ -40,6 +47,8 @@ const PostListPage = () => {
           <PostCard
             key={e.token_id}
             postId={e.token_id}
+              onClickHandler={() => goDetailPageHandler(e.token_id)}
+              profilePIC={pic}
             nickname={realName(e.owner_id)}
             text={e.metadata?.description}
             url={e.metadata?.img}

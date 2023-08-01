@@ -27,18 +27,17 @@ const CardBox = styled.div`
 
 const PostCard = ({
   profilePIC=profilePic,
-  nickname = "Agust D",
-  text = "hi hi",
+  nickname = "",
+  text = "",
   url,
   approveBtn = true,
   coinValueBtn = true,
   chooseMenuBtn = false,
   postId,
-    hearts=100,
-                      coinValue=0.01
+    hearts=100
 }) => {
   return (
-    <CardBox>
+    <CardBox onClick={onClickHandler}>
       <Profile
         coinValue={coinValue}
         profilePIC={profilePIC}
