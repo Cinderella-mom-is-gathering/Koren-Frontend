@@ -38,7 +38,8 @@ const PostListPage = () => {
       <MainWrapper>
         {posts.map((e) => (
           <PostCard
-              profilePIC={pic}
+            key={e.token_id}
+            postId={e.token_id}
             nickname={realName(e.owner_id)}
             text={e.metadata?.description}
             url={e.metadata?.img}

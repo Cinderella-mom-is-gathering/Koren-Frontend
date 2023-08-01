@@ -6,6 +6,8 @@ import TextBox from "./TextBox";
 import ImgBox from "./ImgBox";
 import ApproveButton from "./ApproveButton";
 import RejectButton from "./RejectButton";
+import PostPIC from "../../assets/postPIC.png";
+
 import HeartButton from "./HeartButton";
 import profilePic from "../../assets/nonpic.png"
 
@@ -31,15 +33,18 @@ const PostCard = ({
   approveBtn = true,
   coinValueBtn = true,
   chooseMenuBtn = false,
+  postId,
     hearts=100
 }) => {
   return (
     <CardBox>
       <Profile
+        coinValue={coinValue}
         profilePIC={profilePIC}
         nickname={nickname}
         coinValueBtn={coinValueBtn}
         chooseMenuBtn={chooseMenuBtn}
+        postId={postId}
       />
       <TextBox text={text} />
       <ImgBox url={url} />
