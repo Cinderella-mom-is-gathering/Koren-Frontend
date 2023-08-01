@@ -55,6 +55,7 @@ const PostListPage = () => {
             approveBtn={false}
             coinValueBtn={false}
             chooseMenuBtn={true}
+            hearts={}
           />
         ))}
       </MainWrapper>

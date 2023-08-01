@@ -98,9 +98,6 @@ const realName = (account) => account.split(".")[0];
 const callPostCard = (e) => console.log(e);
 
 const ProfilePage = () => {
-  const repeatedSections = [1, 2, 3];
-  const myName = "rla";
-  const myInstro = "안녕 나는 어거스트D슈가";
   // const myName=realName(wallet.accountId);
   let [myNFTs, setMyNFTs] = useState([]);
   /**
@@ -126,8 +123,8 @@ const ProfilePage = () => {
           <ProImg src={profilePIC} />
         </ProBox>
         <ProBox2>
-          <b>{myName}</b>
-          <ProBox3>{myInstro}</ProBox3>
+          <b>{realName(Api.getMyAccountId())}</b>
+          <ProBox3>{"안녕하세요~" + realName(Api.getMyAccountId())+"입니다!!!"}</ProBox3>
         </ProBox2>
         <MainWrapper>
           {myNFTs.slice().reverse().map((e) => (

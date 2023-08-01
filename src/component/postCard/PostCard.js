@@ -47,6 +47,7 @@ const PostCard = ({
         coinValueBtn={coinValueBtn}
         chooseMenuBtn={chooseMenuBtn}
         postId={postId}
+        hearts={hearts}
       />
       <TextBox text={text} />
       <ImgBox url={url} />
@@ -61,7 +62,7 @@ const PostCard = ({
         )}
 
       </>
-        <HeartButton hearts={100}/>
+        <HeartButton hearts={hearts}/>
 
     </CardBox>
   );
