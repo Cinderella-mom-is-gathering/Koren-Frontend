@@ -32,6 +32,7 @@ const Profile = ({
   nickname,
   coinValueBtn = true,
   chooseMenuBtn = false,
+    coinValue
 }) => {
   return (
     <Wrapper>
@@ -42,7 +43,7 @@ const Profile = ({
       </div>
 
       {coinValueBtn === true ? (
-        <UserCoinValue value={0.001} />
+        <UserCoinValue value={coinValue} />
       ) : chooseMenuBtn === true ? (
         <ChooseMenu />
       ) : (

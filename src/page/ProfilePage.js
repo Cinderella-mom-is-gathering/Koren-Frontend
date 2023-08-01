@@ -129,12 +129,12 @@ const ProfilePage = () => {
         <MainWrapper>
           {myNFTs.slice().reverse().map((e) => (
             <PostCard
+                profilePIC={profilePIC}
               nickname={realName(e.owner_id)}
               text={e.metadata?.description}
               url={e.metadata?.img}
               approveBtn={false}
               coinvalueBtn={false}
-              coinValue={(e.cost / 1e24).toFixed(2)}
             />
           ))}
           {/* {repeatedSections.map((index) => (
