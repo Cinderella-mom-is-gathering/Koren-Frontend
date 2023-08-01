@@ -55,6 +55,7 @@ const PostListPage = () => {
                         approveBtn={false}
                         coinValueBtn={false}
                         chooseMenuBtn={true}
+                        coinValue={(e.cost / 1e24).toFixed(2)}
                     />
                 ))}
             </MainWrapper>
