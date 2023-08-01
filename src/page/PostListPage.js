@@ -16,13 +16,24 @@ const PostListPage = () => {
   return (
     <>
       <Header
-        renderBackArrowButton="false"
-        title="MMemting"
-        renderWritingPostButton="true"
+        renderBackArrowButton={false}
+        title="Memting"
+        renderWritingPostButton={true}
       />
+
       <MainWrapper>
-        <PostCard approvebtn={false} coinvaluebtn={false} />
-        <PostCard approvebtn={false} coinvaluebtn={false} />
+        <PostCard
+          profilePIC={pic}
+          approveBtn={false}
+          coinValueBtn={false}
+          chooseMenuBtn={true}
+        />
+        <PostCard
+          profilePIC={pic}
+          approveBtn={false}
+          coinValueBtn={false}
+          chooseMenuBtn={true}
+        />
       </MainWrapper>
       <BottomNavigationBar />
     </>
