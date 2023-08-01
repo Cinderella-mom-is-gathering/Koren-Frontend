@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import BottomNavigationBar from '../component/BottomNavigationBar';
-import styled from 'styled-components';
-import PostCard from '../component/postCard/PostCard';
-
+import React, { useEffect, useState } from "react";
+import BottomNavigationBar from "../component/BottomNavigationBar";
+import styled from "styled-components";
+import PostCard from "../component/postCard/PostCard";
+import Profile from "../component/postCard/Profile";
+import TextBox from "../component/postCard/TextBox";
+import ImgBox from "../component/postCard/ImgBox";
+import SubmitButton from "../component/SubmitButton";
 import Header from "../component/header/Header";
-import PostPIC from "../assets/postPIC.png" //이미지 불러오기
-import profilePIC from "../assets/profilePIC.png"
-import {Environment} from "../util/Environment";
+import PostPIC from "../assets/postPIC.png"; //이미지 불러오기
+import profilePIC from "../assets/profilePIC.png";
+import { Environment } from "../util/Environment";
 import * as Api from "../apis/ApiInterface";
 
 const MainWrapper = styled.div`
   margin: 15px;
   position: relative;
 
-
   display: flex;
   flex-direction: column;
 `;
 
 const TableWrapper = styled.div`
-    margin-right: 20px;
-    margin-left: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
 `;
 
 const Table = styled.table`
@@ -49,7 +51,7 @@ const BackImg = styled.img`
   object-fit: cover;
   object-position: initial;
   margin-right: 20px;
-`
+`;
 const ProImg = styled.img`
   border-radius: 100px;
   width: 80px;
@@ -60,23 +62,23 @@ const ProImg = styled.img`
   position: absolute;
   top: 220px;
   left: 20px;
-`
+`;
 
 const ProBox = styled.div`
   height: 240px;
-`
+`;
 
 const ProBox2 = styled.div`
   margin-top: 60px;
   margin-left: 40px;
   margin-right: 40px;
   height: 50px;
-`
+`;
 
 const ProBox3 = styled.div`
   margin-top: 15px;
   height: 50px;
-`
+`;
 
 // console.log("아이디 : ", WalletUtil.getAccountId());
 
@@ -87,16 +89,14 @@ const TableRow = ({ label, value }) => (
   </tr>
 );
 
-const realName=(account) =>(
-  account.split(".")[0]
-)
+const realName = (account) => account.split(".")[0];
 
-const callPostCard=(e)=>(console.log(e));
+const callPostCard = (e) => console.log(e);
 
 const ProfilePage = () => {
   const repeatedSections = [1, 2, 3];
-  const myName='rla'
-  const myInstro='안녕 나는 어거스트D슈가'
+  const myName = "rla";
+  const myInstro = "안녕 나는 어거스트D슈가";
   // const myName=realName(wallet.accountId);
   let [myNFTs, setMyNFTs] = useState([]);
   /**
@@ -106,8 +106,8 @@ const ProfilePage = () => {
   ,[]);
    */
   useEffect(() => {
-      Api.getMyPosts().then(setMyNFTs);
-  },[])
+    Api.getMyPosts().then(setMyNFTs);
+  }, []);
 
   return (
     <div>
@@ -117,20 +117,28 @@ const ProfilePage = () => {
         renderWritingPostButton={false}
       />
       <MainWrapper>
-      <ProBox>
-        <BackImg src={PostPIC} />
-        <ProImg src={profilePIC} />
-      </ProBox>
-      <ProBox2>
-        <b>{myName}</b>
-        <ProBox3>{myInstro}</ProBox3>
-      </ProBox2>
-      <MainWrapper>
-        {myNFTs.map((e)=><PostCard nickname={realName(e.owner_id)} text={e.metadata.description} url={e.metadata.media} approveBtn={false} coinValueBtn={false} chooseMenuBtn={false}  />)}
-        {/* {repeatedSections.map((index) => (
+        <ProBox>
+          <BackImg src={PostPIC} />
+          <ProImg src={profilePIC} />
+        </ProBox>
+        <ProBox2>
+          <b>{myName}</b>
+          <ProBox3>{myInstro}</ProBox3>
+        </ProBox2>
+        <MainWrapper>
+          {myNFTs.map((e) => (
+            <PostCard
+              nickname={realName(e.owner_id)}
+              text={e.metadata.description}
+              url={e.metadata.media}
+              approvebtn={false}
+              coinvaluebtn={false}
+            />
+          ))}
+          {/* {repeatedSections.map((index) => (
           <PostCard nickname={myName} text={index} approvebtn={false} coinvaluebtn={false} />
         ))} */}
-      </MainWrapper>
+        </MainWrapper>
       </MainWrapper>
 
       <BottomNavigationBar />
