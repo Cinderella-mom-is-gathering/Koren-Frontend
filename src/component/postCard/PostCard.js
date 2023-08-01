@@ -31,7 +31,7 @@ const PostCard = ({
   coinValue=0.001,
 }) => {
   return (
-    <CardBox>
+    <CardBox onClick={props.goDetailPageHandler}>
       <Profile
         coinValue={coinValue}
         profilePIC={profilePIC}
