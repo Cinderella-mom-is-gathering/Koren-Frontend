@@ -10,6 +10,7 @@ import PostPIC from "../../assets/postPIC.png";
 
 import HeartButton from "./HeartButton";
 import profilePic from "../../assets/nonpic.png"
+import logger from "../../util/Logger";
 
 
 const CardBox = styled.div`
@@ -40,6 +41,9 @@ const PostCard = ({
     requesterId
 }) => {
 
+  logger.debug("PostCard postId",postId);
+  logger.debug("PostCard requesterId",requesterId);
+
     return (
     <CardBox onClick={onClickHandler}>
       <Profile
@@ -56,8 +60,14 @@ const PostCard = ({
       <>
         {approveBtn === true ? (
           <>
-            <RejectButton postId={postId} requesterId={requesterId} />
-            <ApproveButton postId={postId} requesterId={requesterId} />{" "}
+            <RejectButton
+                postId={postId}
+                requesterId={requesterId}
+            />
+            <ApproveButton
+                postId={postId}
+                requesterId={requesterId}
+            />
           </>
         ) : (
           <div></div>

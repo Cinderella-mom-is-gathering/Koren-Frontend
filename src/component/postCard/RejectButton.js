@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import * as Api from '../../apis/ApiInterface';
+import logger from "../../util/Logger";
 
 const Button2 = styled.button`
 
@@ -44,11 +45,18 @@ function MyVerticallyCenteredModal(props) {
 }
 
 
-const RejectButton=(props)=>{
+const RejectButton = (props) => {
+
+  logger.debug("reject props:",props);
+
+  const postId = props.postId;
+  const requesterId = props.requesterId;
   const [modalShow, setModalShow] = React.useState(false);
 
+  logger.debug("RejectButton postId",props.postId,"requesterId",props.requesterId);
+
   const onClickHandler = () => {
-    Api.rejectAdRequest(props.postId,props.requesterId).then(() => {
+    Api.rejectAdRequest(postId,requesterId).then(() => {
       setModalShow(true);
     });
   }
