@@ -1,7 +1,9 @@
 import React from "react";
+import context from "react-bootstrap/esm/AccordionContext";
 
 import styled from "styled-components";
-
+import { DeleteContext } from "../../page/ApprovalADPage";
+import { useContext } from "react";
 
 const Button = styled.button`
 
@@ -17,9 +19,20 @@ const Button = styled.button`
   letter-spacing: 2px;
   
 `
-const RejectButton=()=>{
+
+
+
+const RejectButton=(props)=>{
+
+  const deleteContext = useContext(DeleteContext);
+
+
+  const handleClick = () => {
+    deleteContext.deleteHandler(props.postId);
+  }
+
     return(
-        <Button>거절</Button>
+        <Button onClick={handleClick}>거절</Button>
 
     )
 }
