@@ -7,6 +7,7 @@ import { storage } from "../util/FirebaseInit";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 // import * as api from "../api/api";
 import { createPost } from "../apis/ApiInterface";
+import { useNavigate } from "react-router-dom";
 
 export const AddTextInputPageWrapper = styled.div`
   width: 100%;
@@ -16,6 +17,11 @@ export const AddTextInputPageWrapper = styled.div`
 `;
 
 const AddPostPage = () => {
+  const navigate = useNavigate();
+
+  // const urlParams = new URLSearchParams(window.location.search);
+  // const transactionHashes = urlParams.get("transactionHashes");
+
   const [height, setHeight] = useState(0);
   const [imageFiles, setImageFiles] = useState([]);
   const [imageUrls, setImageUrls] = useState([]); // [url1, url2, url3
@@ -53,12 +59,31 @@ const AddPostPage = () => {
     uploadPost(urls);
   };
 
+  // console.log(urlParams, transactionHashes);
+
   useEffect(() => {
-    if (window) {
-      let prevVisualViewport = window.visualViewport?.height;
-      console.log(prevVisualViewport);
+    // if (window) {
+    //   let prevVisualViewport = window.visualViewport?.height;
+    //   console.log(prevVisualViewport);
+    // }
+    const currentURL = new URL(window.location.href);
+    const urlParams = new URLSearchParams(currentURL.search);
+    const transactionHashes = urlParams.get("transactionHashes");
+
+    console.log(transactionHashes);
+
+    if (transactionHashes) {
+      // 다른 페이지로 이동하는 코드
+      navigate("/posts/complete");
     }
   }, []);
+
+  // useEffect(() => {
+  //   if (transactionHashes) {
+  //     // 다른 페이지로 이동하는 코드
+  //     navigate("/approval");
+  //   }
+  // }, [transactionHashes, navigate]);
 
   return (
     <AddTextInputPageWrapper>
