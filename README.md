@@ -1,7 +1,3 @@
-### Koren
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/89562d41-be9e-45c4-b5f1-a1dcb5b96f2c/Untitled.png)
-
 ### github
 
 [신데렐라엄마는계모임](https://github.com/Cinderella-mom-is-gathering)
